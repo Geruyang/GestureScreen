@@ -25,6 +25,8 @@
 
 Windows 上用 Python 3.12 安装 `HostTools/requirements-studio.txt` 后，可运行 `python HostTools/studio_client.py`；`python HostTools/capture_server.py --list-usb` 只列端口，不打开设备。源码构建步骤见 [HostTools 说明](HostTools/README.md)。固件使用 STM32CubeMX 6.18.1、STM32CubeF4 1.28.3、Keil MDK 5.43 / Arm Compiler 6.24，需自行安装并取得所需许可；从仓库根目录运行 `./Tools/build.ps1 -UV4 <UV4.exe 路径>`。修改 `.ioc` 后还需运行 `python Tools/integrate.py`。默认 USB 采集；`BSP/Inc/gs_capture_config.h` 可切换到保留的以太网实现。首次公开提交是最终交付快照，不包含私人开发过程的 Git 历史。[工具与测试说明](Tools/README.md) 标明哪些脚本需要私有数据或硬件。
 
+使用GestureScreen前建议用采集工具建立用户私有训练/验证/测试集，用用户的数据重新训练并部署MobileNetV1，这样达到的效果更好。
+
 ## 源码导航
 
 | 路径 | 用途 |
@@ -43,7 +45,6 @@ Windows 上用 Python 3.12 安装 `HostTools/requirements-studio.txt` 后，可�
 - 最终部署模型为 MobileNetV1 0.25 × 96 RGB 六分类，**仅用人工标签监督训练**。冻结的部署版 int8 TFLite 模型在私人数据上离线评估：验证集 **293/361 = 81.16%**，测试集 **294/350 = 84.00%**。数据共 2,671 张；评分使用仓库中的 RGB565 预处理和 LiteRT 参考解释器，统计单帧最高分分类，不包含手势门限、持续时间和页面动作。[评估说明](Models/README.md) 给出边界。
 - 部分样本的手势很小或含糊，可能拉低数据集分数；
 - 最终固件已烧录并通过有限窗口的板端健康检查。与该固件匹配的 **72 次完整实板推理耗时为每次 153–182 ms**（中位数 **158 ms**、95 分位数 **176 ms**，均为墙钟时间）；图像预处理另需 **25–40 ms**。
-- 使用GestureScreen前建议用采集工具建立用户私有训练/验证/测试集，用用户的数据重新训练并部署MobileNetV1，这样达到的效果更好。
 
 | 成果文件 | SHA-256 |
 | --- | --- |
