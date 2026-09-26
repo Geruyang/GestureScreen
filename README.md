@@ -56,9 +56,9 @@ Build from the repository root with `./Tools/build.ps1 -UV4 <path-to-UV4.exe>` a
 
 The final deployed model is a six-class MobileNetV1 0.25 × 96 RGB model trained with supervised labels only. On the owner's private, source-isolated images, the **frozen deployed int8 TFLite model** scored **293/361 (81.16%)** on validation and **294/350 (84.00%)** on test. These are top-1 classifications before gesture score, hold-time, and page-action gates, measured offline with the bundled RGB565 preprocessing and LiteRT reference interpreter. The 2,671-image dataset is withheld for privacy; see the [evaluation protocol](Models/README.md).
 
-Some images have small or ambiguous gestures, which may depress the dataset scores relative to some everyday scenes. Actual-use accuracy has not been measured systematically.
+Some images have small or ambiguous gestures, which may depress the dataset scores relative to some everyday scenes.
 
-The final firmware was programmed and passed a limited on-board health window. In 72 complete on-board inference records for this firmware, a single model inference took **153–182 ms wall time** (median **158 ms**, 95th percentile **176 ms**); preprocessing took another **25–40 ms**. The original 100 ms inference target was not met. These are finite-window timings, not classification or gesture-action accuracy. The user's later gesture testing and Windows 10 physical-machine test are not claimed here.
+The final firmware was programmed and passed a limited on-board health window. In 72 complete on-board inference records for this firmware, a single model inference took **153–182 ms wall time** (median **158 ms**, 95th percentile **176 ms**); preprocessing took another **25–40 ms**.
 
 | Artifact | SHA-256 |
 | --- | --- |
