@@ -1,0 +1,4 @@
+# Python 3.12; 使用 tf_keras 加载 TensorFlow 2.8.2 的旧 SavedModel。
+tensorflow==2.16.1
+tf-keras==2.16.0
+numpy==1.26.4

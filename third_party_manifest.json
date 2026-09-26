@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-09-10",
+  "scope": "Selected vendored dependencies and representative source hashes, not a complete SDK SBOM",
+  "source_package": {
+    "name": "STM32Cube FW F4",
+    "version": "1.28.3",
+    "base_release": "1.28.0",
+    "release_notes_date": "2025-07-23",
+    "local_path": "D:/STM32CubeMX/Repository/STM32Cube_FW_F4_V1.28.3",
+    "network_download_performed": false,
+    "evidence": [
+      "package.xml",
+      "Release_Notes.html",
+      "sbom_cdx.json"
+    ],
+    "copied_package_metadata": "Licenses/STM32CubeF4-package.xml",
+    "copied_package_license": "Package_license.md"
+  },
+  "tools": {
+    "cubemx": {
+      "version": "6.18.1",
+      "database_version": "DB.6.0.181",
+      "evidence": "GestureScreen.ioc"
+    },
+    "mdk": {
+      "version": "5.43",
+      "uv4_file_version": "5.43.1.0",
+      "local_executable": "D:/Keil5/UV4/UV4.exe"
+    },
+    "compiler": {
+      "version": "6.24",
+      "family": "ARMCLANG",
+      "local_bin": "D:/Keil5/ARM/ARMCLANG/Bin",
+      "evidence": "Build/GestureScreen-GestureScreen-build.log"
+    }
+  },
+  "components": [
+    {
+      "name": "STM32F4xx HAL Driver",
+      "version": "1.8.5",
+      "license": "BSD-3-Clause",
+      "bundled_path": "Drivers/STM32F4xx_HAL_Driver",
+      "version_evidence": "Src/stm32f4xx_hal.c: __STM32F4xx_HAL_VERSION_MAIN/SUB1/SUB2",
+      "license_files": [
+        "Drivers/STM32F4xx_HAL_Driver/LICENSE.txt",
+        "Package_license.md"
+      ]
+    },
+    {
+      "name": "CMSIS_5",
+      "version": "5.9.0",
+      "license": "Apache-2.0",
+      "bundled_path": "Drivers/CMSIS",
+      "version_evidence": "SDK Release_Notes.html and sbom_cdx.json",
+      "core_macro_version": "5.6",
+      "cmsis_version_header_file_version": "5.0.5",
+      "license_files": [
+        "Drivers/CMSIS/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "STM32F4xx CMSIS Device",
+      "version": "2.6.11",
+      "license": "Apache-2.0",
+      "bundled_path": "Drivers/CMSIS/Device/ST/STM32F4xx",
+      "version_evidence": "Include/stm32f4xx.h: __STM32F4xx_CMSIS_VERSION_MAIN/SUB1/SUB2",
+      "license_files": [
+        "Drivers/CMSIS/Device/ST/STM32F4xx/LICENSE.txt",
+        "Drivers/CMSIS/LICENSE.txt",
+        "Package_license.md"
+      ]
+    },
+    {
+      "name": "FreeRTOS kernel",
+      "version": "10.3.1",
+      "st_modified_release": "20230818",
+      "license": "MIT",
+      "bundled_path": "Middlewares/Third_Party/FreeRTOS/Source",
+      "version_evidence": "include/task.h: tskKERNEL_VERSION_NUMBER; SDK st_readme.txt",
+      "selected_heap": "heap_4.c",
+      "license_files": [
+        "Middlewares/Third_Party/FreeRTOS/Source/LICENSE"
+      ],
+      "note": "The CMSIS_RTOS_V2 subdirectory has separate Apache-2.0 source notices."
+    },
+    {
+      "name": "CMSIS-RTOS2 FreeRTOS wrapper",
+      "version": "bundled-with-CubeF4-1.28.3",
+      "upstream_basis": "CMSIS-FreeRTOS 10.3.0 per ST modification notes",
+      "license": "Apache-2.0",
+      "bundled_path": "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+      "version_evidence": "Licenses/STM32CubeF4-FreeRTOS-st_readme.txt: 20-July-2020",
+      "license_files": [
+        "Drivers/CMSIS/LICENSE.txt"
+      ],
+      "copyright_source": "cmsis_os2.c and other individual source headers"
+    }
+  ],
+  "integration_adjustments": [
+    {
+      "name": "AC6 compatible CM4F port selection",
+      "owner": "Tools/integrate.py",
+      "generated_selection": "portable/RVDS/ARM_CM4F",
+      "selected_selection": "portable/GCC/ARM_CM4F",
+      "source": "Same installed STM32Cube FW F4 V1.28.3 package",
+      "copied_files": [
+        "port.c",
+        "portmacro.h"
+      ],
+      "vendor_source_modified": false,
+      "reason": "Use the SDK GNU-style assembler port with ARMCLANG 6.24 instead of legacy AC5 RVDS assembly."
+    }
+  ],
+  "not_integrated": [
+    "LVGL",
+    "TouchGFX",
+    "ST Edge AI/Cube AI runtime",
+    "TensorFlow Lite Micro",
+    "standalone CMSIS-NN inference backend",
+    "seven-class model weights",
+    "original five-class OpenMV model weights"
+  ],
+  "verification": {
+    "kind": "Local source-byte SHA-256 comparisons and Keil framework build",
+    "keil_build_errors": 0,
+    "keil_build_warnings": 0,
+    "build_log": "Build/GestureScreen-GestureScreen-build.log",
+    "hardware_validation_performed": false,
+    "complete_sdk_audit_performed": false
+  },
+  "key_source_hashes": [
+    {
+      "path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+      "source_relative_path": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+      "sha256": "97e715cda2a34bd564b59ce4ba9b16bd29651f8f229161105aaec666d76ea91a",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/CMSIS/Include/core_cm4.h",
+      "source_relative_path": "Drivers/CMSIS/Include/core_cm4.h",
+      "sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/CMSIS/Include/cmsis_version.h",
+      "source_relative_path": "Drivers/CMSIS/Include/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h",
+      "source_relative_path": "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h",
+      "sha256": "a19edea6b2f4df2ab3c567782c4d313a52319c4303bd56ad7dd1d0e077014657",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/tasks.c",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/tasks.c",
+      "sha256": "8cb1eabe18f130b2b8980e880847f773fb12a4071c763d26c51624223b32a3a4",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c",
+      "sha256": "0dd9ec29eb5862c4520eede87b05e063a4c80223555140c0187e80f97ae9e8aa",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c",
+      "sha256": "c697b88e48e9906a19cabef187e5797a5a45009144f9e473262752c86a5d2c50",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c",
+      "sha256": "89f24a509ec85bf502724334c2607eeb7a432e1f26afbc9b7291254b8f7971dc",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h",
+      "sha256": "356ce2ec084883d8fc41d380910f828aee559f140e877629974752ea26a89792",
+      "identical_to_sdk": true
+    }
+  ],
+  "license_and_provenance_files": [
+    {
+      "path": "Package_license.md",
+      "source_relative_path": "Package_license.md",
+      "sha256": "2fe52ca80ec3d84064631a051a914b418aa65b9126ae5131ea323213a8be5aa2",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/STM32F4xx_HAL_Driver/LICENSE.txt",
+      "source_relative_path": "Drivers/STM32F4xx_HAL_Driver/LICENSE.txt",
+      "sha256": "d5a162f3eaf2b7b6762f00700017cae5695ebbdce7932fead8316448baafd9c1",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/CMSIS/LICENSE.txt",
+      "source_relative_path": "Drivers/CMSIS/LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Drivers/CMSIS/Device/ST/STM32F4xx/LICENSE.txt",
+      "source_relative_path": "Drivers/CMSIS/Device/ST/STM32F4xx/LICENSE.txt",
+      "sha256": "135fb2d86e9ecdf6824cc3bba21c72b8e380c07b055fbebb6b995463eb609baf",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Middlewares/Third_Party/FreeRTOS/Source/LICENSE",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/LICENSE",
+      "sha256": "49678287e48228d68af25ed82841491552b0646e31a8080165758fa72b67105a",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Licenses/STM32CubeF4-FreeRTOS-st_readme.txt",
+      "source_relative_path": "Middlewares/Third_Party/FreeRTOS/Source/st_readme.txt",
+      "sha256": "94e0eab9d302a3403cb53a9f360702fb4bb1899c4803932fe46e4f610094613a",
+      "identical_to_sdk": true
+    },
+    {
+      "path": "Licenses/STM32CubeF4-package.xml",
+      "source_relative_path": "package.xml",
+      "sha256": "2ca0b2176def28e82823a90254da021ca0de0e42e3bac6822a3c02480bde36d4",
+      "identical_to_sdk": true
+    }
+  ]
+}

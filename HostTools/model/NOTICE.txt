@@ -1,0 +1,17 @@
+Model and preprocessing provenance
+==================================
+
+gesture_v12_int8.tflite is the project's frozen v12 six-class model, copied
+byte-for-byte from Build/deployment-v12-20260922/model. Its source checkpoint
+and board-generated weight source hashes are recorded in manifest.json.
+
+preprocess.dll is a Windows x64 build of this project's own gs_preprocess.c,
+gs_preprocess.h, and preprocess_bridge.c included here for review. It does not
+link the ST Edge AI host runtime. It was built with MinGW and imports Windows
+KERNEL32 and Universal C Runtime APIs.
+
+No ST host validation DLL, production.dll, ST inference runtime, or training
+images are included here. The LiteRT interpreter is an external dependency;
+its license and required notices must be supplied by the application packager.
+This notice records provenance and does not grant rights beyond those held by
+the project owner or the licenses of third-party runtime dependencies.

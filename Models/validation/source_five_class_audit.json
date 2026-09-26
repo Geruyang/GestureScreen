@@ -1,0 +1,59 @@
+{
+  "model_sha256": "d8a8ab8d3b87d80a7e027ccd1f6933b3ba7ac4a3eb1d3c038f8a1129cf788566",
+  "file_bytes": 303504,
+  "tensorflow_version": "2.16.1",
+  "inputs": [
+    {
+      "name": "serving_default_input_4:0",
+      "shape": [
+        1,
+        96,
+        96,
+        1
+      ],
+      "shape_signature": [
+        -1,
+        96,
+        96,
+        1
+      ],
+      "dtype": "int8",
+      "scales": [
+        1.0
+      ],
+      "zero_points": [
+        -128
+      ],
+      "quantized_dimension": 0
+    }
+  ],
+  "outputs": [
+    {
+      "name": "StatefulPartitionedCall:0",
+      "shape": [
+        1,
+        5
+      ],
+      "shape_signature": [
+        -1,
+        5
+      ],
+      "dtype": "int8",
+      "scales": [
+        0.10734356939792633
+      ],
+      "zero_points": [
+        26
+      ],
+      "quantized_dimension": 0
+    }
+  ],
+  "tensor_dtypes": [
+    "int32",
+    "int8"
+  ],
+  "validated_for_business": false,
+  "contract_errors": [
+    "output must be [1,7] int8; source five-class model is not a business model"
+  ]
+}

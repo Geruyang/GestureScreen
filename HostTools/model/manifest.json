@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "model_id": "v12-six-class-coverage-seed20260919-int8",
+  "source_weight_sha256": "72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be",
+  "board_generated_weight_source_sha256": "5021039d6f330e2ac29bdea22ae61c5ca2370a1a03e912a2efccb04b571ef0a6",
+  "files_sha256": {
+    "gesture_v12_int8.tflite": "9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f",
+    "preprocess.dll": "9766c8a8897c639f63b9808e68b7f22876a970eb54f936c3aa94bd11bd1d75d1",
+    "gs_preprocess.c": "60311398ccc43a19f6aada58b1aec3dfbd52a9430f45ce78bb1568147007d1dc",
+    "gs_preprocess.h": "ac072193b6788b09b82e134bcc88643f2622713e6cd94e2051737a33d9aab70e",
+    "preprocess_bridge.c": "a2f9aefc61d23839df9d7896261e3b1400a5c3d3b137b187dbcb84e16b170bb8"
+  },
+  "preprocess_version": "rgb565-roi192-rgb96-box2-v1",
+  "frame_format": "RGB565_BE",
+  "frame_shape": [240, 320, 2],
+  "input_shape": [1, 96, 96, 3],
+  "input_dtype": "int8",
+  "input_scale": 1.0,
+  "input_zero_point": -128,
+  "output_shape": [1, 6],
+  "output_dtype": "int8",
+  "output_kind": "logits",
+  "output_scale": 0.09457084536552429,
+  "output_zero_point": -31,
+  "classes": ["POINT_LEFT", "POINT_RIGHT", "FIST", "PALM", "V_SIGN", "UNKNOWN"],
+  "single_frame_target_score": 0.9,
+  "single_frame_target_margin": 0.2,
+  "neutral_score": 0.95,
+  "note": "Same frozen TFLite model/weights as board generation; LiteRT and ST backends can differ numerically. Qualified means a single-frame target candidate, never a confirmed navigation command."
+}

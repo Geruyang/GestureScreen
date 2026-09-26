@@ -1,0 +1,17 @@
+
+========================================================================
+
+** Object/Image Component Sizes
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+      1232          4         16          0          0         88   GestureScreen\Build\model-c-reference\gs_ai_int8_backend_arm.o
+
+
+========================================================================
+
+** Object/Image Component Sizes
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        52         12     234949          0      73728         60   GestureScreen\Build\model-c-reference\gs_model_weights_arm.o

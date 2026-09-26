@@ -1,0 +1,17 @@
+; 用户维护的 AC6 链接布局：STM32F429IG，仅使用片内存储。
+; SDRAM 由后续 BSP 在运行时初始化，禁止放入 C 启动清零区 ZI。
+LR_IROM1 0x08000000 0x00100000 {
+  ER_IROM1 0x08000000 0x00100000 {
+    *.o (RESET, +First)
+    *(InRoot$$Sections)
+    .ANY (+RO)
+  }
+  RW_IRAM1 0x20000000 0x00030000 {
+    .ANY (+RW +ZI)
+  }
+  ; CPU-only Cube.AI activation arena. Clock and first clear are explicit;
+  ; UNINIT prevents startup from accessing CCM before its clock is enabled.
+  RW_CCM_AI 0x10000000 UNINIT 0x00010000 {
+    *(.bss.ccm.ai_arena)
+  }
+}

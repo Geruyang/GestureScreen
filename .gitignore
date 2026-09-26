@@ -1,0 +1,33 @@
+# Local builds and IDE state
+Build/
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/GestureScreen/
+MDK-ARM/DebugConfig/
+MDK-ARM/RTE/
+Middlewares/Third_Party/LwIP/doc/
+Middlewares/Third_Party/LwIP/test/
+*.uvguix.*
+*.uvoptx
+*.mxproject
+*.bak
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Never publish recordings, training data, or local settings.
+custom_dataset/
+Datasets/
+Tests/fixtures/
+**/captures/
+**/captures-*/
+**/sessions/
+**/frames/
+HostTools/client_settings.json
+*.rgb565
+*.avi
+*.mp4
+
+# Optional release bundles are created outside the repository.
+release-assets/

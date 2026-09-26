@@ -1,0 +1,37 @@
+{
+  "LGPL-3.0.txt": {
+    "url": "https://www.gnu.org/licenses/lgpl-3.0.txt",
+    "bytes": 7652,
+    "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+  },
+  "GPL-3.0.txt": {
+    "url": "https://www.gnu.org/licenses/gpl-3.0.txt",
+    "bytes": 35149,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "LGPL-2.1.txt": {
+    "url": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt",
+    "bytes": 26419,
+    "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95"
+  },
+  "Apache-2.0.txt": {
+    "url": "https://raw.githubusercontent.com/google-ai-edge/LiteRT/main/LICENSE",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "pyserial-BSD-3-Clause.txt": {
+    "url": "https://raw.githubusercontent.com/pyserial/pyserial/v3.5/LICENSE.txt",
+    "bytes": 1885,
+    "sha256": "f91cb9813de6a5b142b8f7f2dede630b5134160aedaeaf55f4d6a7e2593ca3f3"
+  },
+  "QtWebEngine-6.8-third-party.html": {
+    "url": "https://doc.qt.io/qt-6.8/qtwebengine-licensing.html",
+    "bytes": 69244,
+    "sha256": "76917a4b6517464a066fe578b63569e6bed984e4ad07bee7bf7bb1a1ef3759c5"
+  },
+  "Chromium-BSD.txt": {
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/heads/main/LICENSE?format=TEXT",
+    "bytes": 1536,
+    "sha256": "368cca1106be99d39ecd32a38d8305585d802a475effb66380b91ffc9bcf709b"
+  }
+}

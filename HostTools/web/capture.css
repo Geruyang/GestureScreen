@@ -1,0 +1,15 @@
+.capture-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.capture-options label {
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+  .capture-options {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "Temporary project only; no synthetic weights installed into actual firmware",
+  "copied_generated_artifacts": true,
+  "selector_changed": true,
+  "corrupted_weights_rejected": true,
+  "real_integrate_not_run_in_fixture": true,
+  "validated_for_business": false
+}

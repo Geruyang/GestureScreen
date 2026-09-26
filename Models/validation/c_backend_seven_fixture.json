@@ -1,0 +1,12 @@
+{
+  "scope": "50 synthetic numerical vectors using synthetic software-test seven-class head plus public backbone; temporary weights destroyed by caller; not gesture accuracy or STM32 timing",
+  "vectors": 50,
+  "output_count": 7,
+  "maximum_int8_error": 0,
+  "tensorflow": "2.16.1",
+  "reference_kernel": "BUILTIN_REF",
+  "compiled_c": "MSVC C11 /O2 /W4 /WX",
+  "workspace_underflow_rejected": true,
+  "unaccepted_candidate_gate_rejected": true,
+  "validated_for_business": false
+}

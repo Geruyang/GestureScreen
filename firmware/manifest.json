@@ -1,0 +1,319 @@
+{
+  "identity": "reader-selection-20260922-host-frozen",
+  "hardware_flashing": false,
+  "baseline_hex_sha256": "9319a6863117359af1a49f7aadd0ba429dcdc8a60d6b7d24fa24830d37de23d9",
+  "source_files": {
+    "App/Src/gs_app.c": {
+      "sha256": "64318ab1a42dbb0f6f781ffd2b68109d39dea2cf6733407ceed2240ea3a1a9a2",
+      "bytes": 41696
+    },
+    "Assets/fonts/NotoSansSC-VF.ttf": {
+      "sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a",
+      "bytes": 17773244
+    },
+    "Assets/fonts/OFL.txt": {
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "bytes": 4388
+    },
+    "Assets/fonts/README.md": {
+      "sha256": "cf60844d94c074a6b7e85e8c888c3a021ece32d087261109d5a783adae8457f3",
+      "bytes": 838
+    },
+    "BSP/Src/gs_port_board.c": {
+      "sha256": "211274416389392a7387af14c47f79711f5a4f2b0614588d75de843845c28ab2",
+      "bytes": 33334
+    },
+    "Modules/Gesture/Src/gs_gesture.c": {
+      "sha256": "172f0e5a75919276e6a9da123260f7d0c129f7233d17dd587523890c1a89bf8e",
+      "bytes": 11683
+    },
+    "Modules/Ui/Inc/gs_ui_font_aa_subset.h": {
+      "sha256": "b6ee4821aa96b8153f93de5d444da4cc12b862d2ac2916125f958381cf2edf78",
+      "bytes": 1419505
+    },
+    "Modules/Ui/Inc/gs_ui_render.h": {
+      "sha256": "6b1055ae92ea82b6a81522e53bf35e2dc99a6d86af0965f91eb2379a35782706",
+      "bytes": 3819
+    },
+    "Modules/Ui/Src/gs_ui_render.c": {
+      "sha256": "c9d89bb804e84c16fa7d1d6afaa280cd33b21bbed3b1bb2a3a6eedcb08a3c22d",
+      "bytes": 36911
+    },
+    "Tests/check_reader_pagination.py": {
+      "sha256": "d5e95fad551077354045f5c64bef939635bc87f795f529e6165dbd2384d4e91c",
+      "bytes": 2185
+    },
+    "Tests/export_ui_font_aa.py": {
+      "sha256": "9d1fee53aa2afea308b0c3a9e45e145b452a5b71d3f993364b52ea6ee49d6c67",
+      "bytes": 2723
+    },
+    "Tests/test_end_to_end.c": {
+      "sha256": "ab6e061f5cbbf2c5de4c23fd1c454b7c8bb0277880c65f4c3114835a98c0e1d4",
+      "bytes": 9834
+    },
+    "Tests/test_gesture_ui.c": {
+      "sha256": "286810f60c7025b63a7421fc040658e6fc98658c4209a7798c0ba19cfbfb450d",
+      "bytes": 19539
+    },
+    "Tests/test_preview_display.c": {
+      "sha256": "a36e8f942a88c7aa4629b4c5f4e21fe2a09ae21a4d783243f25fcebaeee28b05",
+      "bytes": 10653
+    },
+    "Tests/test_reader_ui.c": {
+      "sha256": "5218481d17b9ad1f812062e97115c6a570b077f2072a19d9c1deede530f198d2",
+      "bytes": 4913
+    },
+    "Tests/test_ui_render.c": {
+      "sha256": "e8687f6846352c1a6d45b53d2ae73bb773d205c941e5709b4386c4444a2e0ac3",
+      "bytes": 6394
+    },
+    "Tools/export_reader_screenshots.py": {
+      "sha256": "e1e4fc39ecbf12f99d09204f5044002d34107c48189f912e62a1b0524b0caaa2",
+      "bytes": 1621
+    },
+    "Tools/test_host.ps1": {
+      "sha256": "e389f9d56cb3b3f7a7e37fe4eea3806e0877972bbb588d6974985d3350ef6545",
+      "bytes": 13042
+    },
+    "Tools/verify.py": {
+      "sha256": "f5710775360349ca7cf323ee8e9b99131bc18d65d26e7216b8bcb5f89471cf8a",
+      "bytes": 21894
+    },
+    "Tools/freeze_reader_selection.py": {
+      "sha256": "142fd29f06ebb9d25be8e4e09394b15dd98c63d21dc567292d2d4ac2986f7d3d",
+      "bytes": 7284
+    }
+  },
+  "artifact_files": {
+    "firmware/GestureScreen.axf": {
+      "sha256": "bdc9ccc2e146f41243b00b66cd271dcfcfee46b42df33dae48a80693c1fc35bc",
+      "bytes": 1689620
+    },
+    "firmware/GestureScreen.hex": {
+      "sha256": "2a654ebc9243906abf8466266a79af1c5233e05d978654d0dcfa2ae3cbb9327f",
+      "bytes": 1641186
+    },
+    "firmware/GestureScreen.map": {
+      "sha256": "ba54d856dfba7468f397ac83e3c7fc26ea3fc6032a2891fae99dbc2caf1c589a",
+      "bytes": 1451776
+    },
+    "firmware/keil-build.log": {
+      "sha256": "40495675b9ec8481377fd9331d1629095408629460ebdf5ac7fc6d1ba2644bca",
+      "bytes": 3700
+    },
+    "firmware/screenshots/catalog-selected2.png": {
+      "sha256": "f6fa9702e3dbe4b60bda5d5edd4cbf19a9cbd7273113199e13ba0e76b315143b",
+      "bytes": 45544
+    },
+    "firmware/screenshots/catalog.png": {
+      "sha256": "8893e7d605677b85d46e92d20445652d156e4b6b36d7432d16d7ba74a0ffedec",
+      "bytes": 46133
+    },
+    "firmware/screenshots/direction-left.png": {
+      "sha256": "587206c419219ffa8ce453e3ddbb4b3cb0c6caef7a88c03aea2d439cd88e8077",
+      "bytes": 46134
+    },
+    "firmware/screenshots/direction-right.png": {
+      "sha256": "84ea765c120831f3dc463869963238fac5f16911660f93365f17baecb161c602",
+      "bytes": 45400
+    },
+    "firmware/screenshots/hint.png": {
+      "sha256": "ed648a209ccec25d13ecfea8691c886015fb785f6b895b1bde86becfde795e59",
+      "bytes": 46702
+    },
+    "firmware/screenshots/reading.png": {
+      "sha256": "ef6655a26e7d9a519e7c7cab51495c0f242f69f69e9584be1b495634611f615a",
+      "bytes": 47570
+    },
+    "firmware/screenshots/shelf-selected2.png": {
+      "sha256": "a34a08c377c405e8581a78af08217f4432889fb6b8aabd775844b0cfca8f140e",
+      "bytes": 28880
+    },
+    "firmware/screenshots/shelf.png": {
+      "sha256": "818c3cbce27d76857edd6280dcbd4be24df7ad2a8f25e6c14ef9d7b6dbf9ed78",
+      "bytes": 28873
+    },
+    "firmware/source/App/Inc/gs_timing_trace.h": {
+      "sha256": "fbbe04b6f16a2fbce0a4f0d7e975de5cdfa112ceb9bbb7aa31c4d234847a6d47",
+      "bytes": 3652
+    },
+    "firmware/validation/host-suite-summary.json": {
+      "sha256": "e9ce5108da9cf18f25190225bb444a5b53c41e98b9a49f189780624e60c02ef6",
+      "bytes": 491
+    },
+    "firmware/validation/host-tests/test_buffers-build.log": {
+      "sha256": "6bfd0f430067175ab7f9ddb91e677e03d2a5e8a8022abb9e768c6c12750c5bd9",
+      "bytes": 76
+    },
+    "firmware/validation/host-tests/test_buffers-run.log": {
+      "sha256": "2377a4529b76423cb01a488117c165430faeb76ed1f9345a906ed128295a157e",
+      "bytes": 31
+    },
+    "firmware/validation/host-tests/test_camera_irq-build.log": {
+      "sha256": "651e4b3cc250718ddfc19beb5bda197c4cad380ce4d376b0301147e32b5402a6",
+      "bytes": 60
+    },
+    "firmware/validation/host-tests/test_camera_irq-run.log": {
+      "sha256": "f071a5d5fdf7472682f6f5b25c8e081d2aa3a460eaf2390fbd6c669cbfc8e431",
+      "bytes": 87
+    },
+    "firmware/validation/host-tests/test_end_to_end-build.log": {
+      "sha256": "b0d6ebed5fa68f9a0522a72af4449cdcf4c3dd97ce499c8bc1513f1f8cea6f44",
+      "bytes": 226
+    },
+    "firmware/validation/host-tests/test_end_to_end-run.log": {
+      "sha256": "e9544997fbc0817b700c19874494ac58884eed9554db384e6bb670c1dd2b013a",
+      "bytes": 96
+    },
+    "firmware/validation/host-tests/test_gesture_ui-build.log": {
+      "sha256": "275421fe46ab746651247cdc75fc17f4a897c37cf5513a1f2095808309773f92",
+      "bytes": 65
+    },
+    "firmware/validation/host-tests/test_gesture_ui-run.log": {
+      "sha256": "ae7b04c69537bd469d4589a815ec438bf1f555b79e84c84bdfbae7ae83248415",
+      "bytes": 54
+    },
+    "firmware/validation/host-tests/test_incremental_render-build.log": {
+      "sha256": "6dd79220fe1478bf356641fd51985446926e101e3004e3040dc86dc305967cc8",
+      "bytes": 143
+    },
+    "firmware/validation/host-tests/test_incremental_render-run.log": {
+      "sha256": "9c538861ed3af0d975ef36e86567b9d5bf9608a70fba6c4a53aaff09efd39b64",
+      "bytes": 83
+    },
+    "firmware/validation/host-tests/test_int8_optimized-build.log": {
+      "sha256": "f732d7decf14b4774c56e347a139d88efcf931431068e82455d4f304f50ec585",
+      "bytes": 132
+    },
+    "firmware/validation/host-tests/test_int8_optimized-run.log": {
+      "sha256": "e045513823e4702579fdd1973bbb9d79c356065d69ed38cadf15c07e27c7595a",
+      "bytes": 668
+    },
+    "firmware/validation/host-tests/test_preview_camera-build.log": {
+      "sha256": "3ccb2334cfb4956f6a3f0511a326061a79af18a3d5e6ca3b0dda77154f0a1081",
+      "bytes": 212
+    },
+    "firmware/validation/host-tests/test_preview_camera-run.log": {
+      "sha256": "72eba5aecf6c270b6376fcc41f30e0a4edc2a8d093e4263a87eef976b83b6789",
+      "bytes": 103
+    },
+    "firmware/validation/host-tests/test_preview_display-build.log": {
+      "sha256": "af4033eef7ecb1121708fd37149602a499e650655bfcf66ef43ecf24b18ab293",
+      "bytes": 24
+    },
+    "firmware/validation/host-tests/test_preview_display-run.log": {
+      "sha256": "475f11a12895e2a698246cec52bfb44816423c862140d4fea249f01cfeb7210d",
+      "bytes": 111
+    },
+    "firmware/validation/host-tests/test_preview_pixels-build.log": {
+      "sha256": "41c1fe6383f686862203a21e97d97c169d4c05ce4c488683d2b65491a37682b0",
+      "bytes": 77
+    },
+    "firmware/validation/host-tests/test_preview_pixels-run.log": {
+      "sha256": "f7d84fc24f84494699b0f26e9944607a8d4897406940b93d04c57f64109cdf9b",
+      "bytes": 158
+    },
+    "firmware/validation/host-tests/test_reader_ui-build.log": {
+      "sha256": "beaab4b5d5b67a5537a6eb44de9f9fac75df2742d3d0ebe48817c2bd2487e24c",
+      "bytes": 88
+    },
+    "firmware/validation/host-tests/test_reader_ui-run.log": {
+      "sha256": "587442d916c174035e99a0e0b0cda940e3bbc5ac89999008b7d70e761a8cd448",
+      "bytes": 83
+    },
+    "firmware/validation/host-tests/test_startup-build.log": {
+      "sha256": "6493a20a6dca5214c97c816716acbfb441035915ca429627e807d6358fbe102a",
+      "bytes": 191
+    },
+    "firmware/validation/host-tests/test_startup-run.log": {
+      "sha256": "13bc7063005f70dfe3dff063e5b38137b88f35adfa198734e53b528abca25d67",
+      "bytes": 91
+    },
+    "firmware/validation/host-tests/test_static_app-build.log": {
+      "sha256": "3c72f48650b6a5989ae667046097a873e429fdbfea7bceed231012a2b0ce27eb",
+      "bytes": 151
+    },
+    "firmware/validation/host-tests/test_static_app-run.log": {
+      "sha256": "112b5923be0d993d1df0fb7f4aea6031690781334d03917e39cc0e6f0121fa62",
+      "bytes": 309
+    },
+    "firmware/validation/host-tests/test_static_model-build.log": {
+      "sha256": "49cc557ed9a635189d5e3821429353141d93f82469b43424e15e21da7676f70b",
+      "bytes": 69
+    },
+    "firmware/validation/host-tests/test_static_model-run.log": {
+      "sha256": "207cd3e3da06d7a7a188e9dbabfcf85a39fb9e056d20e873bad47b7140c39cdd",
+      "bytes": 123
+    },
+    "firmware/validation/host-tests/test_timing_trace-build.log": {
+      "sha256": "1ef9e8b3403a44eec0f6e44d037952d79b167a4eec7015801003bdced20bcf3e",
+      "bytes": 63
+    },
+    "firmware/validation/host-tests/test_timing_trace-run.log": {
+      "sha256": "2a4b279f7082bde820b12c3ad03c133ffcf12316f0b2fa0e2f004f4bcaeb62b3",
+      "bytes": 76
+    },
+    "firmware/validation/host-tests/test_ui_render-build.log": {
+      "sha256": "97d4486e1e4af4259b6a3f9cb701abebdc4787aa02715b37b077be71894ab759",
+      "bytes": 134
+    },
+    "firmware/validation/host-tests/test_ui_render-run.log": {
+      "sha256": "2f15b44cf2d6c23d56e16899e2a9036e8133b5eed20e41967594fb7266a51129",
+      "bytes": 109
+    },
+    "firmware/validation/host-tests/test_usb_firmware-build.log": {
+      "sha256": "27cb169bc7969147a5e279bbbc31ab818c6a1b98ca5f5475f1acaf490e24f15d",
+      "bytes": 63
+    },
+    "firmware/validation/host-tests/test_usb_firmware-run.log": {
+      "sha256": "37432ab47dbb07b0f9a5e9f81d1aec750e04fa403e7d9f552d1cbba0cf4c9a41",
+      "bytes": 221
+    },
+    "firmware/validation/host-tests/test_vision-build.log": {
+      "sha256": "50299005faec71cda775374a96912dcefe44eeb815a34540e7b31525687d12f5",
+      "bytes": 64
+    },
+    "firmware/validation/host-tests/test_vision-run.log": {
+      "sha256": "78e61fe18660fb254ebfd746b5cecd5763ba8da51797d8fcc6978664ed1c7246",
+      "bytes": 100
+    },
+    "firmware/validation/model-preprocess-hashes.json": {
+      "sha256": "e36884ae107e417be9603246e13bf82f5256750302064a900fb9b2d128aaec3a",
+      "bytes": 3302
+    },
+    "firmware/validation/pagination-check.log": {
+      "sha256": "6b5e0a02bac92066bdc63f3d42f414195e8ce9ade7f5d6907b5baa8eacbdb69f",
+      "bytes": 46
+    },
+    "firmware/validation/source-diff-vs-reader-direction.json": {
+      "sha256": "bc0c1ad344dd5749908084991721b2d23c5a2e2575ba2a8cb5eedbdba312423f",
+      "bytes": 839
+    },
+    "firmware/validation/source-verify.log": {
+      "sha256": "58d36be43486401f9867b32757a83dc93618d14c63cac9e415e29ad82015d1bc",
+      "bytes": 65
+    },
+    "firmware/validation/timing-layout-check.json": {
+      "sha256": "4d03a5732f76c8d2368e6dde3c45674508e2bc37664459729691173bca6c1079",
+      "bytes": 1590
+    },
+    "firmware/validation/timing-layout.json": {
+      "sha256": "ab0d6196d7646281fdf1d539ec41df5b93ec7341a0881970e165ef3ea20d7db2",
+      "bytes": 1568
+    }
+  },
+  "layout_bytes": {
+    "ER_IROM1": 581852,
+    "RW_CCM_AI": 58624,
+    "RW_IRAM1": 108968
+  },
+  "validation": {
+    "keil": "0 errors, 0 warnings",
+    "host_suites": "all 17 passed",
+    "pagination": "all 15 pages <=4 conservative lines of 6",
+    "timing_layout": "13 exact ELF symbols and AXF/HEX/map hashes verified",
+    "screenshot_count": 8
+  },
+  "scope": "Selected shelf book and catalog row contrast only; gesture actions, model and thresholds unchanged.",
+  "bounds": "host-only software checks; no hardware action or actual gesture test"
+}

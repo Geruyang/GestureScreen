@@ -1,0 +1,33 @@
+{
+  "tool": "ST Edge AI Core 4.0.1-20581 / STM32CubeAI 12.0.1-RC2",
+  "model_sha256": "dad51fcd4f104f66b47dc56767350ee2bc7600bfb0b6debfce99cfad416971f4",
+  "approved_weights_sha256": "9f3550723de4b1b59de7cf25b5f78e667c11875a26a8d90e5412be9e89bb8c83",
+  "dataset_manifest_sha256": "67fb130498be384d019e038b9b1a2874a4bc93c9072a7119995c62b474c137a0",
+  "selected_saved_model_pb_sha256": "87ae46d88ba93487129372d8c93905914ec8e7d8aeffcb5fb248d382b28f7a5d",
+  "source_model_provenance_sha256": "6997bb53397d03ba0997c42d4e7c6b2eefcb38a7333a72a6c3854e3223db1efb",
+  "conversion_json_sha256": "a256646168e418aafa4e3e8d89770b490fdc69085cc4967e1ef521d9f972d35a",
+  "converter_source_sha256": "2a0401d5fc8193dcf535563b9c26185c8d37e3d3f5f5b68a61da6a5c55d2d995",
+  "candidate_identity_sha256": "41dd65ede6b70187dff20a8992aec86179b8ac940d36b1eeab785030b96b87ac",
+  "instrumentation": "29 original-layer end hooks; kernels and weights unchanged",
+  "generated_source_sha256": {
+    "gs_network.c": "84105fbb1d84367514a3b5934e6f5544da0826622c08eb4bab35dc2c0bc1e34f",
+    "gs_network.h": "cebf871ae4a742f9397cdd8a29d692911e9eb2a02ae4b9e3af9c3f5db2df799a",
+    "gs_network_data.c": "24d4aa2bfaa7e4487a7f008b6dbe3ad095bdc95435308bea503f831a36dd2e00",
+    "gs_network_data.h": "792a7aaa05516728d888728938ea192c08f11f763f0c66b35f5be483c022b51c",
+    "gs_network_details.h": "0dd112b2ce9eb418c0667f6fef418c344e6124ae59cedf1a059fba44e46b3e35"
+  },
+  "generation_evidence_sha256": {
+    "gs_network_c_info.json": "41326188b232bab7c03fc325b6a40b5ebc4542cfb77e5f5edd16d5aeeb5649d0",
+    "gs_network_generate_report.txt": "baf2f6a3091a110e6f7145c5f934f77810759a71e8eea1a06993d48f338952f1",
+    "LICENSE.txt": "89a4b36db219612d2ccd64fc594919dddadc013f1c98ca1f019abc13fae1f14f"
+  },
+  "installed_generated_sha256": {
+    "gs_network.c": "3fc81329bc3cce33add0eb5116fc885a061e9b39aab4b6dbdbaa20fa0e0ac00d",
+    "gs_network.h": "cebf871ae4a742f9397cdd8a29d692911e9eb2a02ae4b9e3af9c3f5db2df799a",
+    "gs_network_data.c": "24d4aa2bfaa7e4487a7f008b6dbe3ad095bdc95435308bea503f831a36dd2e00",
+    "gs_network_data.h": "792a7aaa05516728d888728938ea192c08f11f763f0c66b35f5be483c022b51c",
+    "gs_network_details.h": "0dd112b2ce9eb418c0667f6fef418c344e6124ae59cedf1a059fba44e46b3e35"
+  },
+  "backend_sha256": "2a827d42d20d493cbeaeb647d91f88af8229ffc74e8eabf09cac7eee73594659",
+  "runtime_library_sha256": "0c1dbf2686641e83b9720448497db843b2b79a4111574d5467a7453fc3f9d52a"
+}

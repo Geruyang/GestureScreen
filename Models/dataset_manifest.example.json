@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "preprocessing": "rgb565-roi192-gray96-v1",
+  "note": "格式模板，不含训练数据。为每张真实相机原图填写一条samples记录；完整会话只能属于train/validation/calibration/test之一。",
+  "sample_fields": {
+    "file": "frames/session01/frame0001.rgb565",
+    "sha256": "填写原始文件SHA-256",
+    "session": "独立采集会话ID",
+    "label": "POINT_LEFT",
+    "split": "train",
+    "sensor_profile": "OV2640寄存器配置版本",
+    "exposure_profile": "曝光策略版本及收敛状态",
+    "capture_ms": 12345,
+    "width": 320,
+    "height": 240,
+    "stride_bytes": 640,
+    "byte_order": "msb_first"
+  },
+  "samples": []
+}

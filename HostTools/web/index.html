@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GestureScreen · 手势视频采集</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/capture.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div class="brand"><span class="brand-mark">G</span><div><p class="eyebrow">GESTURE STUDIO</p><h1>手势采集工作室</h1><p class="subtitle">看见每个手势，留住每一帧。</p></div></div><div id="connection" class="pill">正在连接板卡</div></header>
+<main>
+<section class="viewer card">
+  <div class="section-title"><div><p class="eyebrow">LIVE VIEW</p><h2>实时观察</h2></div><span id="frame-info">正在等待画面</span></div>
+  <div class="screen"><img id="preview" alt="开发板相机实时画面" hidden><div class="roi" title="模型观察的中心区域"></div><p id="empty-preview">正在连接相机<br><small>请将开发板 Device USB 连接到电脑</small></p><div id="gesture-badge" hidden></div></div>
+  <div class="viewer-footer"><span id="preview-rate">等待实时画面</span><span><i class="roi-key"></i> 手势请完整放在框内</span></div>
+  <div class="buttons observe-tools"><button id="observe-start">连接 / 继续观察</button><button id="observe-stop">暂停观察</button><span class="hint">观察不存盘</span></div>
+  <p class="hint">左右方向以未镜像画面为准。录制期间可改变手的位置、距离、角度和背景，但整段只能保持所选类别。</p>
+  <p id="device-error" class="hint" role="status" hidden></p>
+  <div class="metrics"><div><strong id="total">0</strong><span>本次录制画面</span></div><div><strong id="included">0</strong><span>已整理画面</span></div><div><strong id="rate">—</strong><span>录制目标帧率</span></div></div>
+  <p id="selection-status" class="hint" role="status"></p>
+  <details class="model-details"><summary>识别模型与运行说明</summary><p id="model-info" class="hint">正在加载与板卡同源的模型…</p><p class="hint">实时识别提示仅供观察，不代表板卡已触发翻页，也不参与画面保存或训练筛选。录制意图不会被预测结果覆盖。</p></details>
+</section>
+<aside class="card controls">
+  <div class="section-title"><h2>采集会话</h2><span id="session-state" class="pill neutral">未建立</span></div>
+  <p class="session-notice">新建会话或关闭窗口会清空本次临时内容。需要保留时，请先点击「保存到历史」。</p><p id="workspace-notice" class="hint"></p><button id="take-control" hidden>重新申请采集控制</button>
+  <form id="new-session">
+    <label>会话名称<input id="session-name" maxlength="160" required placeholder="例如：本人_室内侧光_第01轮"></label>
+    <label>会话归档类别（训练资格由外部清洗决定）<select id="split"><option value="train">训练候选 train</option><option value="validation">验证候选 validation</option><option value="calibration">阈值校准候选 calibration</option><option value="test">独立测试候选 test</option></select></label>
+    <details><summary>传感器与曝光记录</summary><label>传感器配置版本<input id="sensor-profile" maxlength="160" value="OV2640_QVGA_RGB565_BE_v1" required></label><label>曝光策略 / 收敛状态<input id="exposure-profile" maxlength="160" value="auto_exposure_unverified" required></label></details>
+    <button type="submit" class="primary full">新建会话</button>
+  </form>
+  <div id="active-session" hidden>
+    <h3 id="session-title"></h3><p id="session-meta" class="hint"></p>
+    <div id="start-panel">
+      <label>本段手势类别<select id="capture-label"></select></label>
+      <div class="capture-options"><label>录制时长（秒）<input id="duration" type="number" min="10" max="120" step="5" value="60"></label></div>
+      <label>视频采样帧数 / 秒<input id="fps" type="number" min="0.2" max="5" step="0.2" value="5"></label>
+      <button id="start-clip" class="primary full">开始录制片段</button><p class="hint">点击后立即开始。手势预选仅记录录制意图；收到的完整画面逐帧保存，整段 AVI 保留全部画面。</p>
+    </div>
+    <div id="recording-panel" hidden><p id="recording-meta" class="recording">正在录制</p><button id="stop-clip" class="full stop">提前结束并生成视频</button><p class="hint">到时会自动结束；提前结束也会将已录到的全部画面生成 AVI。</p></div>
+    <button id="end-session" class="full save-history">保存到历史</button>
+  </div>
+  <div id="clip-labeler" class="clip-labeler" hidden>
+    <h3>片段整理与标签</h3><p id="pending-meta" class="hint"></p><input id="pending-clip-id" type="hidden">
+    <label>片段标签<select id="clip-label"></select></label>
+    <button id="save-clip-label" class="primary full">确认录制意图并生成完整 AVI</button><button id="discard-clip" class="full quiet">放弃片段（保留原始帧）</button>
+  </div>
+  <div class="divider"></div>
+  <button id="export" class="full">导出采集清单</button><p id="export-result" class="hint"></p>
+  <p class="hint">采集清单记录已完成片段的全部画面；本应用不判断训练资格，后续由外部清洗。</p>
+</aside>
+<section class="card gallery-section">
+  <div class="section-title"><div><p class="eyebrow">COLLECTION</p><h2>采集画面</h2></div><div class="scope-tabs"><button id="scope-current" class="selected">本次会话</button><button id="scope-history">历史资料</button></div></div><p id="history-info" class="hint"></p>
+  <p id="label-counts" class="hint">暂无标注</p>
+  <div class="buttons"><button id="newest-page">最新画面</button><button id="previous-page">上一页</button><button id="next-page">下一页</button></div><p id="page-info" class="hint">第 1 页</p>
+  <div id="gallery" class="gallery"><p class="hint">收到图像后会显示在这里。</p></div>
+</section>
+<section class="card clips-section"><div class="section-title"><h2>已录制视频</h2><span>文件名含手势标签与会话内序号</span></div><div id="clips"></div></section>
+<section id="review" class="card review" hidden>
+  <div class="section-title"><h2>检查这一帧</h2><button id="close-review" class="quiet">关闭</button></div>
+  <div class="review-content"><img id="review-image" alt="选中帧"><div><p id="review-meta" class="hint"></p><p>录制意图：<strong id="review-label-text">待标注</strong></p><p class="hint">此处仅查看原始画面和录制意图；质量与训练资格由外部清洗。</p><a id="download-raw" download>下载原始 RGB565</a></div></div>
+</section>
+</main>
+<footer><p><strong>标签语义：</strong>OTHER 表示有手但不属于五种目标手势；EMPTY 表示实际画面内无手。黑帧、坏帧和曝光过渡不能充当 EMPTY。</p><p id="output-root"></p><p id="message" role="status" aria-live="polite"></p></footer>
+</body></html>

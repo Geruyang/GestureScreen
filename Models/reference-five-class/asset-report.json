@@ -1,0 +1,43 @@
+{
+  "business_seven_class_installed": false,
+  "constant_arrays_equal_original_export": true,
+  "oracle_inputs": {
+    "files": {
+      "Tests/fixtures/static_model_input_490.bin": "360ba08f729f462dccd4341b7dd57ed049c6c35e95e26cddd9681c16f366760d",
+      "Tests/fixtures/static_model_input_486.bin": "bcf1798ae313e614b345e598abea24a2f7d891169355bafcd85efac3de2457d6",
+      "Tests/fixtures/static_model_input_494.bin": "c4b9b701bed2f188030da60b197b3db9164160cc04601773a9b7c2de4c6624e7"
+    },
+    "scope": "Saved unlabeled desktop frames, numerical/rejection oracle only"
+  },
+  "LICENSE_sha256": "309d599490f1b0996b31e63c1ae8c757a52a077781122e597ea799e38f451423",
+  "labels": [
+    "no gesture",
+    "palm",
+    "thumb down",
+    "thumb up",
+    "fist"
+  ],
+  "workspace_bytes": 73728,
+  "installed_weights_sha256": "14026f230031f767ec9f150a3e6f45e211a4e252399b10fdb95494f7be994780",
+  "source_manifest_sha256": "5d3a70086f3b43d5bad7eba8b750992dde5e3b671e9ffe04b60aef3505be9731",
+  "modified_asset_wrapping": "Getter renamed to gs_static_model_network; generated raw-run and duplicate workspace removed; no constants relabeled or changed",
+  "original_export_c_sha256": "7c158405f6c2e5f21e19e476c4642e529ff689e410c4ee25fc3c69be7fdf81c2",
+  "output_quantization": {
+    "kind": "int8_logits_stable_softmax_once",
+    "zero_point": 26,
+    "scale": 0.10734356939792633
+  },
+  "business_control_enabled": false,
+  "debug_rejection": {
+    "score_min": 0.9,
+    "calibrated": false,
+    "margin_min": 0.2
+  },
+  "model_sha256": "d8a8ab8d3b87d80a7e027ccd1f6933b3ba7ac4a3eb1d3c038f8a1129cf788566",
+  "input_shape": [
+    1,
+    96,
+    96,
+    1
+  ]
+}

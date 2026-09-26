@@ -1,0 +1,6 @@
+#define gs_ui_render_default_theme baseline_ui_render_default_theme
+#define gs_ui_render_dashboard_rgb565 baseline_ui_render_dashboard_rgb565
+#define gs_ui_render_dashboard_regions_rgb565 baseline_ui_render_dashboard_regions_rgb565
+#define gs_ui_render_rgb565 baseline_ui_render_rgb565
+#define gs_ui_render_preview_rgb565 baseline_ui_render_preview_rgb565
+#include "../Build/timing-fix-20260920/release5/source/Modules/Ui/Src/gs_ui_render.c"

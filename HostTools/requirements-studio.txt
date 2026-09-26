@@ -1,0 +1,6 @@
+PySide6==6.8.3
+PyInstaller==6.11.1
+pyserial==3.5
+numpy==2.5.3
+ai-edge-litert==2.2.0
+Pillow==12.3.0
