@@ -37,6 +37,8 @@ The model classes are `POINT_LEFT`, `POINT_RIGHT`, `FIST`, `PALM`, `V_SIGN`, and
 
 For source use, install the dependencies in `HostTools/requirements-studio.txt` with Python 3.12, then run `python HostTools/studio_client.py`. `python HostTools/capture_server.py --list-usb` lists ports without opening one. See [HostTools](HostTools/README.md) for the development workflow.
 
+Before using GestureScreen, it's recommended to use a collection tool to create private training/validation/test sets for the user, then retrain and deploy MobileNetV1 with the user's data — this will give better results.
+
 ## Source map
 
 | Path | Purpose |
@@ -59,8 +61,6 @@ The final deployed model is a six-class MobileNetV1 0.25 × 96 RGB model trained
 Some images have small or ambiguous gestures, which may depress the dataset scores relative to some everyday scenes.
 
 The final firmware was programmed and passed a limited on-board health window. In 72 complete on-board inference records for this firmware, a single model inference took **153–182 ms wall time** (median **158 ms**, 95th percentile **176 ms**); preprocessing took another **25–40 ms**.
-
-Before using GestureScreen, it's recommended to use a collection tool to create private training/validation/test sets for the user, then retrain and deploy MobileNetV1 with the user's data — this will give better results.
 
 | Artifact | SHA-256 |
 | --- | --- |
