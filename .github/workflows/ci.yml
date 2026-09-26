@@ -1,0 +1,30 @@
+name: Source and synthetic host checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  host-checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install USB test dependency
+        run: python -m pip install -r HostTools/requirements-usb.txt
+      - name: Check Python syntax
+        run: python -m compileall -q HostTools Models Tools Tests
+      - name: Run privacy-safe synthetic capture tests
+        run: |
+          python -m unittest discover -s Tests -p 'test_capture_client.py' -q
+          python -m unittest discover -s Tests -p 'test_capture_server.py' -q
+          python -m unittest discover -s Tests -p 'test_managed_capture.py' -q
+
+# Firmware compilation needs the licensed Keil/CubeMX toolchain and real-board
+# checks need physical hardware. This job deliberately makes neither claim.

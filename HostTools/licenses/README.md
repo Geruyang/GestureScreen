@@ -21,10 +21,15 @@ Qt licensing information and source access are published at
 at <https://doc.qt.io/qt-6.8/qtwebengine-licensing.html> and preserved here as
 `QtWebEngine-6.8-third-party.html`. Chromium source and license are available at
 <https://chromium.googlesource.com/chromium/src/>. Gesture Studio uses the LGPL
-option for the Qt components and packages them as separate shared libraries.
-Recipients should be able to replace those LGPL libraries, subject to the
-conditions in the license. This inventory supplies license texts and source
-locations; it is not a legal determination of every distribution obligation.
+option for the Qt components. The released PyInstaller **one-file** executable
+extracts its bundled shared libraries to a temporary directory at runtime;
+the release does not provide a persistent external Qt DLL directory for direct
+replacement. The application source, pinned dependencies, and `studio.spec`
+are provided so recipients can install a compatible modified Qt build and
+rebuild the application; see [source build steps](../README.md). This rebuild
+path has not been tested with a modified Qt build. The license texts and source
+locations above remain authoritative; this inventory is not a legal
+determination of every distribution obligation.
 
 The official STM32Cube.AI host runtime is not included. The app carries the
 frozen project's TFLite model and project-built preprocess library, with their

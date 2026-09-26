@@ -23,14 +23,35 @@
 3. 将开发板原生 USB（J38）连接电脑。原生 USB CDC 端口与 fireDAP 虚拟串口不是同一个端口。客户端首次运行会在 EXE 旁创建空 `captures`；观察不存图，录制会保存完整帧。
 4. 录制后点击“保存到历史”才长期保留。正常关窗或新建会清理临时录制，已保存的历史保留。导出数据未清洗，`training_ready=false`，不能直接当作合格训练集。
 
-源码开发可安装 `HostTools/requirements-studio.txt` 后运行 `python HostTools/studio_client.py`；`python HostTools/capture_server.py --list-usb` 只列端口，不打开设备。固件用 STM32CubeMX 6.18.1、STM32CubeF4 1.28.3、Keil MDK 5.43 / Arm Compiler 6.24。修改 `.ioc` 后还需运行 `python Tools/integrate.py`。默认 USB 采集；`BSP/Inc/gs_capture_config.h` 可切换到保留的以太网实现。
+Windows 上用 Python 3.12 安装 `HostTools/requirements-studio.txt` 后，可运行 `python HostTools/studio_client.py`；`python HostTools/capture_server.py --list-usb` 只列端口，不打开设备。源码构建步骤见 [HostTools 说明](HostTools/README.md)。固件使用 STM32CubeMX 6.18.1、STM32CubeF4 1.28.3、Keil MDK 5.43 / Arm Compiler 6.24，需自行安装并取得所需许可；从仓库根目录运行 `./Tools/build.ps1 -UV4 <UV4.exe 路径>`。修改 `.ioc` 后还需运行 `python Tools/integrate.py`。默认 USB 采集；`BSP/Inc/gs_capture_config.h` 可切换到保留的以太网实现。首次公开提交是最终交付快照，不包含私人开发过程的 Git 历史。[工具与测试说明](Tools/README.md) 标明哪些脚本需要私有数据或硬件。
+
+## 源码导航
+
+| 路径 | 用途 |
+| --- | --- |
+| `GestureScreen.ioc`、`MDK-ARM/GestureScreen.uvprojx` | 唯一 CubeMX 配置与 Keil Target |
+| `App/`、`Modules/`、`BSP/` | 阅读器、手势决策、采集与板级实现 |
+| `Core/`、`Drivers/`、`Middlewares/`、`USB_DEVICE/` | 生成代码与厂家依赖 |
+| `Assets/content/` | 公版示例内容及来源 |
+| `HostTools/` | Gesture Studio、USB/HTTP 采集与本地模型 |
+| `Models/`、`checkpoints/` | 模型工具、最终训练检查点及未部署的研究检查点 |
+| `firmware/` | 最终 HEX 与对应调试产物 |
+| `Tools/`、`Tests/` | 构建、集成、验证与调试工具 |
 
 ## 成果与边界
 
-- 最佳已部署学生模型：MobileNetV1 0.25 × 96 RGB，私人验证集 **292/361 = 80.89%**；三种子平均 **77.65%**，不能称稳定达到 80%。
-- 保留但未部署的教师模型：MobileNetV1 1.0 × 224 RGB，验证 **336/361 = 93.07%**。
-- 数据总计 2,671 张，测试拆分未评分。上述验证结果不是普遍用户手势准确率，也不是实板准确率。
+- 最终部署模型为 MobileNetV1 0.25 × 96 RGB 六分类，**仅用人工标签监督训练，未使用教师输出或知识蒸馏**。训练检查点文件名中的 `student` 是历史命名，保留以便核对产物。冻结的部署版 int8 TFLite 模型在私人数据上离线评估：验证集 **293/361 = 81.16%**，测试集 **294/350 = 84.00%**。数据共 2,671 张；评分使用仓库中的 RGB565 预处理和 LiteRT 参考解释器，统计单帧最高分分类，不包含手势门限、持续时间和页面动作。[评估说明](Models/README.md) 给出边界。
+- 部分样本的手势很小或含糊，可能拉低数据集分数；实际使用准确率尚无系统测量，不能据此声称更高的具体数值。另有一个较大但未部署的研究检查点。仓库保留的 Arm 来源五类参考权重也不是最终 Keil Target 中的六类模型，见[第三方来源](THIRD_PARTY.md)。
 - 最终固件已烧录并通过有限窗口的板端健康检查；**100 ms 推理目标未达成**。编译、主机测试、健康、分类、持势和页面动作需分别看待。
+
+| 成果文件 | SHA-256 |
+| --- | --- |
+| `firmware/GestureScreen.hex` | `2a654ebc9243906abf8466266a79af1c5233e05d978654d0dcfa2ae3cbb9327f` |
+| `firmware/GestureScreen.axf` | `bdc9ccc2e146f41243b00b66cd271dcfcfee46b42df33dae48a80693c1fc35bc` |
+| `HostTools/model/gesture_v12_int8.tflite` | `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f` |
+| `checkpoints/student-96rgb-best.pt`（历史文件名） | `72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be` |
+
+完整清单见 [SHA256SUMS](SHA256SUMS)；发布版 `GestureStudio.exe` 的 SHA-256 为 `37b710f9588a1a96ff9d27ff65e353177b31f50aa582852c6e4f49a8574bea56`。
 
 **数据集由本人录制，包含个人隐私，因此不上传。** 仓库和发布附件均不含原始采集帧、录制会话、样本图像或标注数据；仅提供训练后的模型与工具。请用自己有授权的数据复现或适配。更多说明见 [PRIVACY.md](PRIVACY.md)。
 

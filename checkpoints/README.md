@@ -1,11 +1,6 @@
-# Retained model checkpoints
+# Retained checkpoints
 
-- `student-96rgb-best.pt`: deployed MobileNetV1 0.25 × 96 RGB training
-  checkpoint. Best validation run: 292/361 (80.89%); three-seed mean: 77.65%.
-- `teacher-224rgb-best.pt`: MobileNetV1 1.0 × 224 RGB teacher checkpoint.
-  Validation: 336/361 (93.07%). It was not deployed on the board.
+- `student-96rgb-best.pt` is the source training checkpoint for the final six-class MobileNetV1 0.25 × 96 RGB model. The filename is historical: this model used supervised labels only, with no teacher outputs or knowledge distillation.
+- `teacher-224rgb-best.pt` is a separate, larger research checkpoint. It was not used to train the deployed checkpoint and was not deployed.
 
-The deployed int8 TFLite form is at `../HostTools/model/gesture_v12_int8.tflite`.
-The training dataset was recorded by the owner and is withheld for privacy.
-These checkpoint files contain weights, not the underlying camera frames.
-The separate 350-image test split was not scored. See [PRIVACY.md](../PRIVACY.md).
+For the final **deployed int8** model's validation and test accuracy and the exact offline scoring method, see [Models/README.md](../Models/README.md). The checkpoint files contain weights, not underlying camera frames. The owner-recorded dataset remains private.

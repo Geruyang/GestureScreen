@@ -1,21 +1,14 @@
-# Model artifacts and tools
+# Final model and evaluation
 
-The deployed model is the six-class MobileNetV1 0.25 × 96 RGB student. Its
-TFLite form is `../HostTools/model/gesture_v12_int8.tflite`; the saved training
-checkpoint is `../checkpoints/student-96rgb-best.pt`. The larger
-`../checkpoints/teacher-224rgb-best.pt` is a retained teacher, not the model in
-the firmware. See the root [README](../README.md) for exact validation results
-and artifact hashes.
+The six-class final deployed model is MobileNetV1 0.25 × 96 RGB. It was trained with hard labels only, without teacher outputs or knowledge distillation. Its frozen int8 TFLite form is `../HostTools/model/gesture_v12_int8.tflite` (SHA-256 `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f`). The source training checkpoint retains its historical filename `../checkpoints/student-96rgb-best.pt`. A separate larger research checkpoint was retained but was not used for this model or deployed.
 
-This folder contains training, preprocessing, quantization, and C export
-tools. Some scripts describe or expect the original private dataset layout;
-you must supply your own consented data and adjust paths. They do not make
-the withheld dataset available. Training and binary reproduction were not
-re-run while preparing this public checkout.
+| Frozen deployed int8 model | Correct / total | Top-1 accuracy |
+| --- | ---: | ---: |
+| Validation | 293 / 361 | 81.16% |
+| Test | 294 / 350 | 84.00% |
 
-The original v12 private dataset has 2,671 images, with 1,960 for training,
-361 for validation, and 350 unscored test images. The published best-run
-validation score is 292/361; the three-seed mean is 77.65%. The teacher's
-validation score is 336/361. These numbers do not establish on-board or
-general-user accuracy. The dataset is private for the owner's privacy; see
-[PRIVACY.md](../PRIVACY.md).
+The owner scored these private, source-isolated splits once after the final model had been frozen. Each RGB565 frame was checked against its private manifest SHA-256, passed through the bundled `HostTools/model/preprocess.dll` RGB565 → center 192 × 192 ROI → 96 × 96 RGB int8 pipeline, and classified by the pinned LiteRT 2.2.0 reference interpreter using the published TFLite file. All 711 evaluation frames passed the preprocessing quality check. The table counts the top-logit class against the private label for every frame. It does not apply confidence, margin, temporal hold, or UI action rules. The board's Cube.AI backend may differ numerically; no on-board accuracy study is claimed. The private images and per-frame predictions were not published.
+
+Some captured hands appear small or ambiguous. They may lower this dataset score relative to some use conditions, but actual-use accuracy has not been measured systematically. Validation data was used during model selection, so the test result is the more relevant final split; neither result establishes accuracy across new people or settings.
+
+This folder also contains training, preprocessing, quantization, and C export tools. Many historical scripts require the owner's private dataset or removed build intermediates. They are provided as research/reference code, not as a turnkey recreation of the original training run. Use your own consented data. See [privacy](../PRIVACY.md) and [tool status](../Tools/README.md).

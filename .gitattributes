@@ -1,0 +1,15 @@
+* text=auto
+*.pt -text
+*.tflite -text
+*.ttf -text
+*.dll -text
+*.axf -text
+*.hex text eol=crlf
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.ico -text
+Drivers/** linguist-vendored
+Middlewares/** linguist-vendored
+USB_DEVICE/** linguist-generated
+Core/** linguist-generated

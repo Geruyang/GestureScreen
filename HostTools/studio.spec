@@ -18,7 +18,7 @@ datas += [(str(root / 'web'), 'web'), (str(root / 'model'), 'model'),
 for distribution in ('PySide6', 'PySide6_Essentials', 'PySide6_Addons', 'shiboken6',
                      'ai-edge-litert', 'numpy', 'pillow', 'pyserial', 'pyinstaller'):
     datas += copy_metadata(distribution)
-a = Analysis(['studio_client.py'], pathex=[str(root)], binaries=binaries, datas=datas,
+a = Analysis([str(root / 'studio_client.py')], pathex=[str(root)], binaries=binaries, datas=datas,
              hiddenimports=hiddenimports, excludes=['tensorflow', 'torch'],
              noarchive=False)
 pyz = PYZ(a.pure)

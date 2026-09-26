@@ -1,5 +1,5 @@
 {
-  "source": "E:\\AIProject\\EBVC\\GestureScreen\\Assets\\content\\package.json",
+  "source": "Assets/content/package.json",
   "source_sha256": "ed51ebba14a080711f36069cb09e9d6e89570120c674e048ffd7f40550afb858",
   "python": "3.12.14",
   "pillow": "12.3.0",

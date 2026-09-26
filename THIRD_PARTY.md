@@ -9,6 +9,7 @@ original copyright and license notices when copying or redistributing it.
 | --- | --- | --- |
 | STM32F4 HAL, CMSIS, FreeRTOS, lwIP, STM32 USB Device library and STM32Cube.AI generated/runtime components | `Drivers/`, `Middlewares/`, `USB_DEVICE/`, generated files | `Package_license.md`, `DEPENDENCIES.md`, and licenses beside each component. Some ST components have hardware-specific terms. |
 | Noto Sans SC font and generated glyph subset | `Assets/fonts/`, `Modules/Ui/Inc/` | SIL Open Font License 1.1 in `Assets/fonts/OFL.txt`. |
+| Arm OpenMV five-class reference model weights | `Modules/StaticRecognition/Src/gs_static_weights.c`, `Models/reference-five-class/` | Arm Limited 2022, MIT; original license and pinned-source manifest are included. This historical five-class weight file is **not** the six-class Cube.AI model compiled into the final Keil target. |
 | Gesture Studio's bundled Python, Qt, Chromium, LiteRT and other dependencies | Source manifests and Windows release executable | `HostTools/licenses/README.md` and the files in that directory; original notices are included in the executable. |
 | Three classical Chinese texts | `Assets/content/` | Public-domain original works, credited in `DEPENDENCIES.md` and `Assets/content/reader_source.json`. |
 

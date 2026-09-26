@@ -46,15 +46,17 @@ For source use, install the dependencies in `HostTools/requirements-studio.txt` 
 | `Core/`, `Drivers/`, `Middlewares/`, `USB_DEVICE/` | Generated and vendor-supplied firmware dependencies |
 | `Assets/content/` | Public-domain sample text and provenance |
 | `HostTools/` | Gesture Studio, browser UI, USB/HTTP capture, bundled model and licenses |
-| `Models/`, `checkpoints/` | Training/export tools and the retained student/teacher checkpoints |
+| `Models/`, `checkpoints/` | Training/export tools, the final model checkpoint, and a separate undeployed research checkpoint |
 | `firmware/` | The final HEX and matching debug artifacts |
 | `Tools/`, `Tests/` | Build, integration, host verification, and debug helpers |
 
-Build from the repository root with `./Tools/build.ps1 -UV4 <path-to-UV4.exe>`. A CubeMX regeneration also needs `python Tools/integrate.py` afterward. Tool defaults reflect the original Windows development environment, so pass your own installed tool paths. The 121 file paths referenced by the Keil project were checked in this public source tree. See [DEPENDENCIES.md](DEPENDENCIES.md) and [THIRD_PARTY.md](THIRD_PARTY.md) for component licenses.
+Build from the repository root with `./Tools/build.ps1 -UV4 <path-to-UV4.exe>` after installing the licensed toolchain. A CubeMX regeneration also needs `python Tools/integrate.py` afterward. The 121 file paths referenced by the Keil project were checked in this public source tree. This repository began as a final delivery snapshot; the first public commit does not contain the private development history. See [DEPENDENCIES.md](DEPENDENCIES.md), [THIRD_PARTY.md](THIRD_PARTY.md), and [tool/test guidance](Tools/README.md).
 
 ## Model and verification status
 
-The deployed student is MobileNetV1 0.25 × 96 RGB. On a private 361-image validation split it scored **292/361 (80.89%)** in its best run; the mean of three seeds was **77.65%**. The retained 1.0 × 224 RGB teacher scored **336/361 (93.07%)** and was **not deployed**. These are validation results, not measured accuracy for all users or on the board. The 350-image test split was not scored. The dataset totals 2,671 images and is withheld for privacy.
+The final deployed model is a six-class MobileNetV1 0.25 × 96 RGB model trained with supervised labels only; no teacher outputs or distillation were used for this model. The historical `student` checkpoint filename is retained for artifact identity. On the owner's private, source-isolated images, the **frozen deployed int8 TFLite model** scored **293/361 (81.16%)** on validation and **294/350 (84.00%)** on test. These are top-1 classifications before gesture score, hold-time, and page-action gates, measured offline with the bundled RGB565 preprocessing and LiteRT reference interpreter. The 2,671-image dataset is withheld for privacy; see the [evaluation protocol](Models/README.md).
+
+Some images have small or ambiguous gestures, which may depress the dataset scores relative to some everyday scenes. Actual-use accuracy has not been measured systematically, so no higher real-use figure is claimed. The retained larger checkpoint is a separate, undeployed research artifact. The older Arm-derived five-class reference weights are also present as a historical example; they are not the six-class model compiled into the final Keil target. See [third-party provenance](THIRD_PARTY.md).
 
 The final firmware was programmed and passed a limited on-board health window. Host builds and tests, on-board health, classification quality, gesture holding, and reader actions are different checks. The original 100 ms inference target was **not met**. The user's later gesture testing and Windows 10 physical-machine test are not claimed here.
 
@@ -62,8 +64,9 @@ The final firmware was programmed and passed a limited on-board health window. H
 | --- | --- |
 | `firmware/GestureScreen.hex` | `2a654ebc9243906abf8466266a79af1c5233e05d978654d0dcfa2ae3cbb9327f` |
 | `firmware/GestureScreen.axf` | `bdc9ccc2e146f41243b00b66cd271dcfcfee46b42df33dae48a80693c1fc35bc` |
-| `checkpoints/student-96rgb-best.pt` | `72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be` |
-| `checkpoints/teacher-224rgb-best.pt` | `5b0356d957aec7155d5cd24c51d7267d411200017e7d20ab4705a2a57990756f` |
+| `HostTools/model/gesture_v12_int8.tflite` | `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f` |
+| `checkpoints/student-96rgb-best.pt` (historical filename) | `72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be` |
+| `checkpoints/teacher-224rgb-best.pt` (undeployed research) | `5b0356d957aec7155d5cd24c51d7267d411200017e7d20ab4705a2a57990756f` |
 
 The Studio release executable's SHA-256 is `37b710f9588a1a96ff9d27ff65e353177b31f50aa582852c6e4f49a8574bea56`.
 

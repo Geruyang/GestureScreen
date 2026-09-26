@@ -2,13 +2,16 @@
 Does not modify source or use hardware. Reports cannot prove race/timing safety.
 """
 import argparse
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import xml.etree.ElementTree as ET
 
 root=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--compiler',default=r'D:\Keil5\ARM\ARMCLANG\bin\armclang.exe')
+parser.add_argument('--compiler', default=os.environ.get('ARMCLANG') or shutil.which('armclang') or 'armclang',
+                    help='Arm Compiler 6 executable; defaults to ARMCLANG or PATH')
 parser.add_argument('--include-generated',action='store_true',
                     help='Also analyze Core and USB_DEVICE; suppress template unused-parameter warnings there.')
 args=parser.parse_args()

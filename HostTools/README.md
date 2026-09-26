@@ -35,10 +35,21 @@ quality. Save a session to history to retain it. Normal close and new-session
 actions clear temporary data; saved history is retained.
 
 The model, preprocessing bridge, browser UI, and third-party license
-inventory are in `model/`, `web/`, and `licenses/`. `studio.spec` describes the
-one-file build. The source build requires installed dependencies; the final
-EXE's rebuild environment was removed from the private development tree after
-delivery, so the exact binary reproduction is not asserted from this checkout.
+inventory are in `model/`, `web/`, and `licenses/`. To build a new Windows
+one-file executable from the published source, after the dependency install
+above, run:
+
+```powershell
+.\.venv\Scripts\python.exe -m PyInstaller --clean --noconfirm HostTools\studio.spec
+```
+
+The build needs the included Windows `preprocess.dll`. The released executable
+was assembled in the original environment, which was removed after delivery;
+an exact byte-for-byte rebuild of its SHA-256 is **not** asserted here. A newly
+built executable must be tested and hashed separately. For a modified
+LGPL-compatible Qt build, install that Qt/PySide6 build in the environment
+before rebuilding; the published one-file release cannot use a persistent
+replacement DLL directory. See [license inventory](licenses/README.md).
 
 No recording session or original image from the project owner's private
 dataset is included. See [privacy](../PRIVACY.md).
