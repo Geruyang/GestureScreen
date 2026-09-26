@@ -60,6 +60,8 @@ Some images have small or ambiguous gestures, which may depress the dataset scor
 
 The final firmware was programmed and passed a limited on-board health window. In 72 complete on-board inference records for this firmware, a single model inference took **153–182 ms wall time** (median **158 ms**, 95th percentile **176 ms**); preprocessing took another **25–40 ms**.
 
+Before using GestureScreen, it's recommended to use a collection tool to create private training/validation/test sets for the user, then retrain and deploy MobileNetV1 with the user's data — this will give better results.
+
 | Artifact | SHA-256 |
 | --- | --- |
 | `firmware/GestureScreen.hex` | `2a654ebc9243906abf8466266a79af1c5233e05d978654d0dcfa2ae3cbb9327f` |
