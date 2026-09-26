@@ -5,6 +5,12 @@
 *.dll -text
 *.axf -text
 *.hex text eol=crlf
+firmware/GestureScreen.map text eol=crlf
+Assets/content/package.json text eol=crlf
+Modules/Content/Src/gs_content_builtin.c text eol=lf
+HostTools/model/gs_preprocess.c text eol=lf
+HostTools/model/gs_preprocess.h text eol=lf
+HostTools/model/preprocess_bridge.c text eol=lf
 *.png -text
 *.jpg -text
 *.jpeg -text
