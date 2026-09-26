@@ -6,8 +6,8 @@ may reveal the owner, their surroundings, and other personal information.
 or annotations from those recordings are published in this repository or its
 release assets.**
 
-The published final training checkpoint, separate research checkpoint, and deployed TFLite model
-are trained artifacts. They are provided without the underlying images. Model
+The published final training checkpoint and deployed TFLite model are trained
+artifacts. They are provided without the underlying images. Model
 weights are not a substitute for the withheld dataset, and the reported
 validation and test scores cannot be independently reproduced from this repository
 alone. Please collect and use your own data with consent when adapting the

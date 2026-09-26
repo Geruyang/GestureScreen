@@ -34,22 +34,22 @@ Windows 上用 Python 3.12 安装 `HostTools/requirements-studio.txt` 后，可�
 | `Core/`、`Drivers/`、`Middlewares/`、`USB_DEVICE/` | 生成代码与厂家依赖 |
 | `Assets/content/` | 公版示例内容及来源 |
 | `HostTools/` | Gesture Studio、USB/HTTP 采集与本地模型 |
-| `Models/`、`checkpoints/` | 模型工具、最终训练检查点及未部署的研究检查点 |
+| `Models/`、`checkpoints/` | 最终模型评估与训练检查点 |
 | `firmware/` | 最终 HEX 与对应调试产物 |
 | `Tools/`、`Tests/` | 构建、集成、验证与调试工具 |
 
 ## 成果与边界
 
-- 最终部署模型为 MobileNetV1 0.25 × 96 RGB 六分类，**仅用人工标签监督训练，未使用教师输出或知识蒸馏**。训练检查点文件名中的 `student` 是历史命名，保留以便核对产物。冻结的部署版 int8 TFLite 模型在私人数据上离线评估：验证集 **293/361 = 81.16%**，测试集 **294/350 = 84.00%**。数据共 2,671 张；评分使用仓库中的 RGB565 预处理和 LiteRT 参考解释器，统计单帧最高分分类，不包含手势门限、持续时间和页面动作。[评估说明](Models/README.md) 给出边界。
-- 部分样本的手势很小或含糊，可能拉低数据集分数；实际使用准确率尚无系统测量，不能据此声称更高的具体数值。另有一个较大但未部署的研究检查点。仓库保留的 Arm 来源五类参考权重也不是最终 Keil Target 中的六类模型，见[第三方来源](THIRD_PARTY.md)。
-- 最终固件已烧录并通过有限窗口的板端健康检查；**100 ms 推理目标未达成**。编译、主机测试、健康、分类、持势和页面动作需分别看待。
+- 最终部署模型为 MobileNetV1 0.25 × 96 RGB 六分类，**仅用人工标签监督训练**。冻结的部署版 int8 TFLite 模型在私人数据上离线评估：验证集 **293/361 = 81.16%**，测试集 **294/350 = 84.00%**。数据共 2,671 张；评分使用仓库中的 RGB565 预处理和 LiteRT 参考解释器，统计单帧最高分分类，不包含手势门限、持续时间和页面动作。[评估说明](Models/README.md) 给出边界。
+- 部分样本的手势很小或含糊，可能拉低数据集分数；实际使用准确率尚无系统测量。
+- 最终固件已烧录并通过有限窗口的板端健康检查。与该固件匹配的 **72 次完整实板推理耗时为每次 153–182 ms**（中位数 **158 ms**、95 分位数 **176 ms**，均为墙钟时间）；图像预处理另需 **25–40 ms**。原定 100 ms 推理目标未达成。以上是有限窗口的耗时记录，不代表分类、持势或页面动作准确率。
 
 | 成果文件 | SHA-256 |
 | --- | --- |
 | `firmware/GestureScreen.hex` | `2a654ebc9243906abf8466266a79af1c5233e05d978654d0dcfa2ae3cbb9327f` |
 | `firmware/GestureScreen.axf` | `bdc9ccc2e146f41243b00b66cd271dcfcfee46b42df33dae48a80693c1fc35bc` |
 | `HostTools/model/gesture_v12_int8.tflite` | `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f` |
-| `checkpoints/student-96rgb-best.pt`（历史文件名） | `72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be` |
+| `checkpoints/final-96rgb-best.pt` | `72db45f37036530652ef07e19ad20e6ce94552027d0fc81a9987c074f6c5c4be` |
 
 完整清单见 [SHA256SUMS](SHA256SUMS)；发布版 `GestureStudio.exe` 的 SHA-256 为 `37b710f9588a1a96ff9d27ff65e353177b31f50aa582852c6e4f49a8574bea56`。
 

@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import hashlib
 import http.client
-import importlib.util
 import json
 from pathlib import Path
 import socket
@@ -159,13 +158,11 @@ class CaptureHTTPTests(unittest.TestCase):
         self.assertEqual(manifest["samples"][0]["session"], row["session_id"])
         self.assertEqual(manifest["samples"][0]["label"], "PALM")
         self.assertEqual(manifest["clips"][0]["video_file"], clip["video_file"])
-        # 与模型团队的实际公开读取接口对照，不复制其验证实现。
-        spec = importlib.util.spec_from_file_location("gs_capture_test_dataset", PROJECT / "Models" / "dataset.py")
-        dataset = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(dataset)
-        report, tensors = dataset.read_dataset(manifest_path, complete=False)
-        self.assertEqual(report["sample_count"], 1)
-        self.assertEqual(len(tensors[0]), 9216)
+        # 导出的原始帧与清单必须仍能对应，且不依赖旧训练加载器。
+        exported = manifest["samples"][0]
+        exported_raw = (manifest_path.parent / exported["file"]).read_bytes()
+        self.assertEqual(exported_raw, raw)
+        self.assertEqual(hashlib.sha256(exported_raw).hexdigest(), exported["sha256"])
         self.assertEqual(self.request("GET", "/api/export")[0], 200)
 
     def test_rgb565_big_endian_png_color_and_dimensions(self):
@@ -198,7 +195,7 @@ class CaptureHTTPTests(unittest.TestCase):
             with self.subTest(overrides=overrides):
                 status, content, _ = self.request("POST", "/api/frames", b"", self.frame_headers(**overrides))
                 self.assertEqual(status, expected, content)
-        for path in ("/../../Models/model_contract.json", "/media/%2e%2e%2fsecret.png", "/api/frames?offset=-1", "/api/frames?limit=999"):
+        for path in ("/../../README.md", "/media/%2e%2e%2fsecret.png", "/api/frames?offset=-1", "/api/frames?limit=999"):
             self.assertIn(self.request("GET", path)[0], (400, 404))
         self.assertEqual(len(self.store.records), 0)
 

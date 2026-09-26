@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import http.client
-import importlib.util
 import json
 from pathlib import Path
 import shutil
@@ -213,7 +212,7 @@ class ManagedCaptureTests(unittest.TestCase):
             self.store.export()
         self.assertFalse((self.root / "dataset_manifest.json").exists())
 
-    def test_export_at_data_root_is_readable_by_training_loader(self):
+    def test_export_at_data_root_has_readable_manifest_and_frame(self):
         self.open()
         self.new()
         record = self.one_frame()
@@ -226,12 +225,13 @@ class ManagedCaptureTests(unittest.TestCase):
         second = self.store.export()
         self.assertNotEqual(first["manifest"], second["manifest"])
         self.assertTrue(first_path.is_file())
-        spec = importlib.util.spec_from_file_location("gs_managed_capture_dataset", PROJECT / "Models/dataset.py")
-        dataset = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(dataset)
-        report, tensors = dataset.read_dataset(first_path, complete=False)
-        self.assertEqual(report["sample_count"], 1)
-        self.assertEqual(len(tensors[0]), 9216)
+        manifest = json.loads(first_path.read_text(encoding="utf-8"))
+        self.assertEqual(manifest["schema_version"], 1)
+        self.assertEqual(len(manifest["samples"]), 1)
+        exported = manifest["samples"][0]
+        raw = (first_path.parent / exported["file"]).read_bytes()
+        self.assertEqual(len(raw), FRAME_BYTES)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), exported["sha256"])
         self.store.workspace_action({"action": "close", "owner": self.OWNER})
         self.assertTrue(first_path.is_file())
         self.assertTrue((first_path.parent / self.store.records[record]["file"]).is_file())

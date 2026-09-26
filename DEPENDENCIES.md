@@ -1,5 +1,9 @@
 # 依赖、来源与许可证
 
+## 最终版本（2026-09-26）
+
+最终 Keil Target 使用 STM32Cube.AI 运行库和六类 int8 模型；模型及生成代码位于 `HostTools/model/` 与 `Middlewares/ST/AI/Generated/`，成果哈希见 `SHA256SUMS`。Gesture Studio 使用 PySide6、PyInstaller、pyserial、NumPy、LiteRT 和 Pillow，版本见 `HostTools/requirements-studio.txt`。下列日期章节保留依赖引入时的记录，不能当作最终集成状态。
+
 ## 2026-09-17 USB增量
 
 - USB Device CDC使用同一STM32CubeF4 1.28.3中的 `Middlewares/ST/STM32_USB_Device_Library`，由CubeMX生成并集成；保留供应商源码、版权及原始LICENSE。自编协议与发送器位于Modules/UsbCapture、BSP，USB_DEVICE接入只改USER CODE。
@@ -10,8 +14,7 @@
 
 - 新增同一CubeF4 1.28.3自带lwIP，编译源与SHA-256记录在 `Build/lwip-source-manifest.json`；供应商源码未修改，NO_SYS端口为项目自编。许可保留于Middlewares/Third_Party/LwIP。
 - OV2640 QVGA表提取自同SDK `Drivers/BSP/Components/ov2640/ov2640.c` V1.0.2；源哈希写在`BSP/Inc/gs_ov2640_regs.h`，原许可保留于`BSP/ThirdParty/ov2640-LICENSE.txt`。
-- 电脑采集工具只依赖Python标准库。训练采用项目Build下独立TF2.16.1/tf_keras2.16环境，版本见Models文档，不污染系统Python。
-- 新增项目自编标量C int8执行器，无CubeAI/TFLM运行库；公开主干来源与模型哈希见Models/TRAINING.md及validation目录。真实工程未安装模型权重。
+- 当时的电脑采集工具只依赖 Python 标准库；最终 Gesture Studio 的依赖见文首。
 
 以下是2026-09-10原框架依赖记录；“本次”仅指该历史基线。
 
@@ -64,8 +67,4 @@ CubeMX 的旧 MDK 生成器选择 `RVDS/ARM_CM4F`，其中旧 Arm Compiler 5 汇
 - 柳宗元：[小石潭记](https://zh.wikisource.org/zh-hans/至小丘西小石潭記)。
 - 刘禹锡：[陋室铭](https://zh.wikisource.org/zh-hans/陋室銘)。
 
-Gesture Studio使用已有Python/Tk/pyserial环境；Tcl/Tk脚本由当前Python安装复制至项目缓存，原始license.terms随脚本保留，不修改全局安装。当前模型和STM32Cube.AI实际版本见 `Docs/deployment-v12-20260922.md`，本次阅读器改造保持该模型实现不变。
-
-## 历史：初始框架尚未引入的组件
-
-LVGL、TouchGFX、ST Edge AI/Cube AI 运行库、TFLM、独立 CMSIS-NN 推理后端及七类模型权重均未集成。UI 目前是可移植状态与渲染接口，AI 后端默认不可用。上级研究目录中的原始五类 OpenMV 模型只作研究来源，不进入此固件，也不成为本清单中“已部署模型”。以后引入新组件时，应同时补版本、原始来源、许可及实际源文件/模型哈希。
+最终 Gesture Studio 的第三方许可清单见 `HostTools/licenses/README.md`；模型评估见 `Models/README.md`，固件产物和板端测速见 `firmware/README.md`。阅读器内容改造保持该模型实现不变。

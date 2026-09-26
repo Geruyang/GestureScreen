@@ -1,7 +1,7 @@
 ﻿#requires -Version 5.1
 <#
 .SYNOPSIS
-使用 MSVC 编译并运行十七组不依赖硬件的 C 测试。
+使用 MSVC 编译并运行不依赖硬件的 C 测试。
 .EXAMPLE
 .\Tools\test_host.ps1
 .EXAMPLE
@@ -67,7 +67,7 @@ $suites = @(
                     'App\Src\gs_timing_trace.c',
                     'Modules\Gesture\Src\gs_gesture.c', 'Modules\Ui\Src\gs_ui.c',
                     'Modules\Vision\Src\gs_preprocess.c', 'Modules\Vision\Src\gs_ai.c',
-                    'Modules\StaticRecognition\Src\gs_static_recognition.c', 'Modules\StaticRecognition\Src\gs_static_weights.c',
+                    'Modules\StaticRecognition\Src\gs_static_recognition.c',
                     'Modules\Vision\Src\gs_ai_int8_backend.c')
     },
     @{
@@ -75,12 +75,6 @@ $suites = @(
         Includes = @('Build\host', 'BSP\Inc', 'Modules\Display\Inc', 'Modules\Gesture\Inc', 'Modules\Ui\Inc',
                      'Modules\Preview\Inc', 'Modules\Vision\Inc', 'Modules\StaticRecognition\Inc')
         Sources = @('Tests\test_preview_display.c')
-    },
-    @{
-        Name = 'test_int8_optimized'
-        Includes = @('Modules\StaticRecognition\Inc', 'Modules\Vision\Inc')
-        Sources = @('Tests\test_int8_optimized.c', 'Tests\int8_round8_oracle.c', 'Tests\int8_round9_probe.c',
-                    'Modules\StaticRecognition\Src\gs_static_weights.c', 'Modules\Vision\Src\gs_ai_int8_backend.c')
     },
     @{
         Name = 'test_static_model'
@@ -104,7 +98,7 @@ $suites = @(
         Includes = @('Modules\Ui\Inc', 'Modules\Gesture\Inc', 'Modules\Preview\Inc',
                      'Modules\StaticRecognition\Inc', 'Modules\Vision\Inc')
         Sources = @('Tests\test_ui_render.c', 'Modules\Ui\Src\gs_ui_render.c', 'Modules\Ui\Src\gs_ui.c',
-                    'Modules\StaticRecognition\Src\gs_static_recognition.c', 'Modules\StaticRecognition\Src\gs_static_weights.c',
+                    'Modules\StaticRecognition\Src\gs_static_recognition.c',
                     'Modules\Vision\Src\gs_ai_int8_backend.c')
     },
     @{
@@ -114,7 +108,6 @@ $suites = @(
         Sources = @('Tests\test_incremental_render.c',
                     'Modules\Ui\Src\gs_ui_render.c', 'Modules\Ui\Src\gs_ui.c',
                     'Modules\StaticRecognition\Src\gs_static_recognition.c',
-                    'Modules\StaticRecognition\Src\gs_static_weights.c',
                     'Modules\Vision\Src\gs_ai_int8_backend.c')
     },
     @{
@@ -133,7 +126,7 @@ $suites = @(
                     'App\Src\gs_timing_trace.c',
                     'Modules\Ui\Src\gs_ui.c', 'Modules\Vision\Src\gs_preprocess.c',
                     'Modules\Vision\Src\gs_ai.c', 'Modules\StaticRecognition\Src\gs_static_recognition.c',
-                    'Modules\StaticRecognition\Src\gs_static_weights.c', 'Modules\Vision\Src\gs_ai_int8_backend.c')
+                    'Modules\Vision\Src\gs_ai_int8_backend.c')
     },
     @{
         Name = 'test_usb_firmware'
@@ -174,7 +167,7 @@ $suites = @(
                     'Modules\Ui\Src\gs_ui_render.c',
                     'Modules\Vision\Src\gs_preprocess.c',
                     'Modules\Vision\Src\gs_ai.c', 'Modules\StaticRecognition\Src\gs_static_recognition.c',
-                    'Modules\StaticRecognition\Src\gs_static_weights.c', 'Modules\Vision\Src\gs_ai_int8_backend.c',
+                    'Modules\Vision\Src\gs_ai_int8_backend.c',
                     'Tests\test_end_to_end.c')
     }
 )
@@ -204,7 +197,7 @@ $batchLines.Add('set "_CL_="')
 foreach ($suite in $suites) {
     $compilerArgs = [System.Collections.Generic.List[string]]::new()
     $compilerArgs.Add('cl /nologo /std:c11 /utf-8 /W4 /WX /UNDEBUG')
-    if ($suite.Name -in @('test_int8_optimized','test_preview_pixels','test_ui_pixels')) { $compilerArgs.Add('/O2') }
+    if ($suite.Name -in @('test_preview_pixels','test_ui_pixels')) { $compilerArgs.Add('/O2') }
     foreach ($include in $suite.Includes) {
         $includePath = Join-Path $projectRoot $include
         if (-not (Test-Path -LiteralPath $includePath -PathType Container)) {

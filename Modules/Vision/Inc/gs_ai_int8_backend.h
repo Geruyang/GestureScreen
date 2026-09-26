@@ -6,8 +6,9 @@
 /* Model descriptors/weights and input are immutable during execution, including
  * progress callbacks. Caller exclusively owns workspace/output for this call. */
 
-/* 串行 NHWC int8 执行器，仅接收 Models/export_c.py 已验证的静态链式网络。
- * 不解释任意TFLite文件；无堆、ISR、HAL和第三方运行库依赖。 */
+/* 串行 NHWC int8 链式网络执行器，不解释任意 TFLite 文件。
+ * 最终固件使用 STM32Cube.AI 后端；此通用接口保留供主机测试。
+ * 无堆、ISR、HAL和第三方运行库依赖。 */
 typedef enum { GS_INT8_CONV = 1, GS_INT8_DEPTHWISE = 2, GS_INT8_AVERAGE = 3 } gs_int8_op_t;
 
 typedef struct {

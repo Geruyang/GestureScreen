@@ -174,9 +174,6 @@ require(sum(p.name == 'port.c' for p in paths) == 1, 'exactly one RTOS port')
 require(any('GCC/ARM_CM4F/port.c' in p.as_posix() for p in paths), 'AC6-compatible RTOS port')
 for base in ['App', 'BSP', 'Modules']:
     for file in (root / base).rglob('*.c'):
-        if file.name == 'gs_static_weights.c':
-            require(file.resolve() not in paths, 'reference weights excluded from Cube.AI firmware')
-            continue
         require(file.resolve() in paths, 'user source in Keil: ' + str(file))
 require('GS_STATIC_USE_CUBEAI=1' in tree.findtext('.//Cads/VariousControls/Define'), 'Cube.AI deployment enabled')
 require(any(p.name == 'gs_network.c' for p in paths), 'Cube.AI generated network linked')

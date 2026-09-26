@@ -12,7 +12,7 @@ GS = ROOT / 'GestureScreen'
 WORK = GS / 'Build/deployment-v12-20260922'
 CAMPAIGN = GS / 'Build/models/custom-2671/v12-improve-v1'
 SOURCE = CAMPAIGN / 'source'
-sys.path[:0] = [str(SOURCE), str(ROOT / 'custom_dataset/tools'), str(GS / 'Models')]
+sys.path[:0] = [str(SOURCE), str(ROOT / 'custom_dataset/tools')]
 from v12_six_class_model import SixClassMobileNetV1, evaluate_six
 from v12_camera_data import read_rgb_dataset, LABELS
 from train_student_rgb565_arch_ablation_torch_v9 import resize_view, deterministic, cuda_device

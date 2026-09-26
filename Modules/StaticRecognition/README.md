@@ -18,6 +18,5 @@ RGB565 中心 192×192 ROI 按位复制还原 RGB888，各通道做 2×2 `(sum+2
 `GS_MODEL_VALIDATED_FOR_BUSINESS=0` 表示尚未通过实板业务验收。模型契约 ready、
 联调授权和正式验收是三个独立状态。
 
-历史五类参考权重仍留在 `gs_static_weights.c` 供数值回归，`Tools/integrate.py`
-明确不把它链接进生产固件。主机测试和 Keil 构建不能代替 Cortex-M4 时延、
+主机测试和 Keil 构建不能代替 Cortex-M4 时延、
 用户五动作准确率、屏幕可读性或长期稳定验收。

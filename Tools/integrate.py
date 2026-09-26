@@ -53,8 +53,6 @@ for base in [ROOT / 'App', ROOT / 'BSP', *sorted((ROOT / 'Modules').glob('*'))]:
     if (base / 'Inc').is_dir():
         include_dirs.append('../' + (base / 'Inc').relative_to(ROOT).as_posix())
     sources = sorted((base / 'Src').glob('*.c'))
-    # Reference weights stay available for host regression, not duplicated in Flash.
-    sources = [p for p in sources if p.name != 'gs_static_weights.c']
     if not sources:
         continue
     group = ET.SubElement(groups, 'Group')

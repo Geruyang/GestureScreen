@@ -1,5 +1,5 @@
 #requires -Version 5.1
-<# 软件复验入口：编译、模块/采集/模型测试、静态分析和调试配置检查。
+<# 软件复验入口：编译、模块/采集测试、静态分析和调试配置检查。
    不打开采集串口，不连接、暂停、复位或烧录目标芯片。 #>
 param(
     [string]$Python = 'python',
@@ -19,7 +19,6 @@ if (-not (Select-String -LiteralPath (Join-Path $projectRoot 'Build\keil-build.l
 & (Join-Path $PSScriptRoot 'test_host.ps1') -VcVarsPath $VcVarsPath
 & (Join-Path $PSScriptRoot 'test_capture.ps1') -Python $Python -Node $Node
 & (Join-Path $PSScriptRoot 'test_ethernet.ps1') -Python $Python -VcVarsPath $VcVarsPath
-& (Join-Path $projectRoot 'Models\test.ps1') -Python $Python -VcVarsPath $VcVarsPath
 $wire = Join-Path $results 'c-sender.bin'
 & (Join-Path $projectRoot 'Build\host\test_usb_firmware.exe') $wire
 if ($LASTEXITCODE -ne 0) { throw 'C wire fixture failed' }

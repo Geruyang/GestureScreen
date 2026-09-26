@@ -1,6 +1,6 @@
 # Final model and evaluation
 
-The six-class final deployed model is MobileNetV1 0.25 × 96 RGB. It was trained with hard labels only, without teacher outputs or knowledge distillation. Its frozen int8 TFLite form is `../HostTools/model/gesture_v12_int8.tflite` (SHA-256 `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f`). The source training checkpoint retains its historical filename `../checkpoints/student-96rgb-best.pt`. A separate larger research checkpoint was retained but was not used for this model or deployed.
+The six-class final deployed model is MobileNetV1 0.25 × 96 RGB, trained with supervised labels. Its frozen int8 TFLite form is `../HostTools/model/gesture_v12_int8.tflite` (SHA-256 `9cc300884c79aed938dba492c7e5b536a1ab064b5f59c14d40c3628b7b7e4f4f`). Its source training checkpoint is `../checkpoints/final-96rgb-best.pt`.
 
 | Frozen deployed int8 model | Correct / total | Top-1 accuracy |
 | --- | ---: | ---: |
@@ -11,4 +11,4 @@ The owner scored these private, source-isolated splits once after the final mode
 
 Some captured hands appear small or ambiguous. They may lower this dataset score relative to some use conditions, but actual-use accuracy has not been measured systematically. Validation data was used during model selection, so the test result is the more relevant final split; neither result establishes accuracy across new people or settings.
 
-This folder also contains training, preprocessing, quantization, and C export tools. Many historical scripts require the owner's private dataset or removed build intermediates. They are provided as research/reference code, not as a turnkey recreation of the original training run. Use your own consented data. See [privacy](../PRIVACY.md) and [tool status](../Tools/README.md).
+The matching model and preprocessing used by Gesture Studio are in `../HostTools/model/`; final deployment scripts are in `../Tools/deploy_v12_*`. Recreating the original training or export requires the owner's private dataset and removed build intermediates. Use your own consented data. See [privacy](../PRIVACY.md) and [tool status](../Tools/README.md).

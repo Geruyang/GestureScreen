@@ -31,7 +31,4 @@ gs_ai_status_t gs_static_decode_logits(const int8_t logits[GS_STATIC_CLASS_COUNT
     float output_scale, int32_t output_zero_point, gs_static_result_t *result);
 gs_ai_status_t gs_static_model_status(void);
 void gs_static_expire(gs_static_result_t *result, uint32_t now_ms);
-/* Legacy five-class reference getter is retained only for its isolated host
- * regression. It is not a production fallback for the six-class contract. */
-const gs_int8_model_t *gs_static_model_network(void);
 #endif
