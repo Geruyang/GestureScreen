@@ -6,6 +6,14 @@ GestureScreen combines an OV2640 camera, an 800 × 480 RGB display, an on-device
 
 [简体中文说明](README.zh-CN.md) · [Downloads](https://github.com/Geruyang/GestureScreen/releases) · [Privacy](PRIVACY.md) · [Third-party licenses](THIRD_PARTY.md)
 
+## Demo video and architecture
+
+[Play the complete demo in your browser](https://geruyang.github.io/GestureScreen/) · [Download the 1080p video from v1.0.0](https://github.com/Geruyang/GestureScreen/releases/download/v1.0.0/GestureScreen-demo-HQ.mp4)
+
+<a href="https://geruyang.github.io/GestureScreen/"><img src="docs/demo-poster.jpg" alt="Play the GestureScreen demonstration" width="640"></a>
+
+<img src="docs/architecture.svg" alt="GestureScreen camera, on-device inference, reader interface, capture studio, and private training workflow" width="760">
+
 ## What it does
 
 | Gesture | Reader action |

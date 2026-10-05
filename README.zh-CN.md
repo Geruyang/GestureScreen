@@ -4,6 +4,14 @@
 
 [English README](README.md) · [下载](https://github.com/Geruyang/GestureScreen/releases) · [隐私说明](PRIVACY.md) · [第三方许可](THIRD_PARTY.md)
 
+## 演示视频与架构图
+
+[在网页中播放完整演示](https://geruyang.github.io/GestureScreen/) · [下载 v1.0.0 的 1080p 视频](https://github.com/Geruyang/GestureScreen/releases/download/v1.0.0/GestureScreen-demo-HQ.mp4)
+
+<a href="https://geruyang.github.io/GestureScreen/"><img src="docs/demo-poster.jpg" alt="点击播放 GestureScreen 演示视频" width="640"></a>
+
+<img src="docs/architecture.svg" alt="GestureScreen 摄像头采集、板端推理、阅读器界面、采集工具与私有数据训练流程架构图" width="760">
+
 ## 手势操作
 
 | 手势 | 动作 |
