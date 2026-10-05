@@ -15,6 +15,7 @@ HostTools/model/preprocess_bridge.c -text
 *.jpg -text
 *.jpeg -text
 *.ico -text
+demo/GestureScreen-demo-HQ.mp4 filter=lfs diff=lfs merge=lfs -text
 Drivers/** linguist-vendored
 Middlewares/** linguist-vendored
 USB_DEVICE/** linguist-generated

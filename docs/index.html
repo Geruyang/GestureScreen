@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>GestureScreen 演示视频</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #10151d; color: #edf2f7; }
+    main { width: min(100% - 32px, 1000px); margin: 32px auto 64px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    p { line-height: 1.6; color: #c9d3df; }
+    a { color: #8fd8ff; }
+    .intro { margin: 0 0 22px; }
+    video { display: block; width: 100%; max-height: 78vh; background: #000; border-radius: 12px; box-shadow: 0 12px 40px #0008; }
+    .links { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 38px; }
+    h2 { margin-top: 42px; }
+    img { display: block; width: 100%; height: auto; background: #fff; border-radius: 10px; }
+    .note { font-size: .92rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>GestureScreen 演示视频</h1>
+    <p class="intro">野火 STM32F429 挑战者 V1 上的离线手势控制阅读器。点击播放即可在网页中观看完整演示。</p>
+    <video controls playsinline preload="metadata" poster="demo-poster.jpg" aria-label="GestureScreen 完整演示视频">
+      <source src="https://github.com/Geruyang/GestureScreen/releases/download/v1.0.0/GestureScreen-demo-HQ.mp4" type="video/mp4">
+      您的浏览器无法播放此视频。请使用下方的直接链接。
+    </video>
+    <nav class="links" aria-label="演示视频链接">
+      <a href="https://github.com/Geruyang/GestureScreen/releases/tag/v1.0.0">查看 v1.0.0 Release</a>
+      <a href="https://github.com/Geruyang/GestureScreen/blob/main/demo/GestureScreen-demo-HQ.mp4">查看 main 分支中的视频</a>
+      <a href="https://github.com/Geruyang/GestureScreen/releases/download/v1.0.0/GestureScreen-demo-HQ.mp4">下载完整视频</a>
+      <a href="https://github.com/Geruyang/GestureScreen">返回仓库</a>
+    </nav>
+    <p class="note">公开版本仅对画面中的人脸打码，保留 1920 × 1080、30 帧/秒；已移除原始拍摄位置等设备元数据。</p>
+    <h2>系统架构</h2>
+    <img src="architecture.svg" alt="GestureScreen 的摄像头采集、板端手势推理、阅读器界面与 PC 采集训练流程架构图" loading="lazy">
+  </main>
+</body>
+</html>
