@@ -84,3 +84,8 @@ The Studio release executable's SHA-256 is `37b710f9588a1a96ff9d27ff65e353177b31
 The gesture dataset was **recorded by the project owner** and includes personal imagery. No dataset, raw capture, session, or test image is published. The model artifacts are supplied without that data; see [PRIVACY.md](PRIVACY.md).
 
 The owner's original work is MIT licensed. Bundled ST, Arm, FreeRTOS, lwIP, Qt, font, and other third-party components retain their own terms; see [THIRD_PARTY.md](THIRD_PARTY.md). Issues and pull requests are welcome under [CONTRIBUTING.md](CONTRIBUTING.md). If this project helps your STM32 camera or gesture UI work, a Star helps others find it.
+
+## Community
+
+This project recognizes and supports the [LINUX DO community](https://linux.do/).
+Join the community to discuss open source and technology.
