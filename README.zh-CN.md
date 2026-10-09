@@ -66,3 +66,8 @@ Windows 上用 Python 3.12 安装 `HostTools/requirements-studio.txt` 后，可�
 **数据集由本人录制，包含个人隐私，因此不上传。** 仓库和发布附件均不含原始采集帧、录制会话、样本图像或标注数据；仅提供训练后的模型与工具。请用自己有授权的数据复现或适配。更多说明见 [PRIVACY.md](PRIVACY.md)。
 
 原创部分采用 [MIT 许可证](LICENSE)。ST、Arm、Qt、字体等第三方文件继续遵循各自许可，详见 [THIRD_PARTY.md](THIRD_PARTY.md)。欢迎按 [贡献说明](CONTRIBUTING.md) 提 issue 或 PR；如果项目有帮助，欢迎 Star，让其他 STM32 开发者更容易找到它。
+
+## 社区交流
+
+本项目认可并支持 [LINUX DO 社区](https://linux.do/)。
+欢迎访问社区，交流开源与技术。
